@@ -1,10 +1,10 @@
-export default function Logo({ className = "h-7 w-auto" }) {
+export default function Logo({ className = "h-7" }) {
   return (
-    <img
-      src="/ontime-logo.png"
-      alt="Pragmr OnTime"
-      className={className}
-      draggable="false"
+    <span
+      role="img"
+      aria-label="Pragmr OnTime"
+      className={`logo-white ${className}`}
+      style={{ aspectRatio: "1444 / 536" }}
     />
   );
 }

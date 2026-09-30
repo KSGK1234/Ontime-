@@ -52,22 +52,24 @@ module.exports = {
                     '4': 'hsl(var(--chart-4))',
                     '5': 'hsl(var(--chart-5))'
                 },
-                paper: '#F4F4F2',
+                void: '#0A0B10',
+                panel: '#12141C',
                 ink: '#131316',
+                paper: '#F4F4F2',
                 line: '#E4E4E7',
                 brand: {
                     DEFAULT: '#514EB3',
                     dark: '#43408F',
-                    light: '#A8A6E8',
-                    pale: '#ECEAFB'
+                    hi: '#6360D4',
+                    light: '#A8A6E8'
                 },
                 delay: '#F59E0B',
                 ontrack: '#10B981',
                 critical: '#EF4444'
             },
             fontFamily: {
-                display: ['"Cabinet Grotesk"', 'ui-sans-serif', 'sans-serif'],
-                sans: ['"General Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                display: ['"Clash Display"', 'ui-sans-serif', 'sans-serif'],
+                sans: ['"Satoshi"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
                 mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
             },
             keyframes: {

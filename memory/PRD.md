@@ -15,15 +15,12 @@ Build a marketing experience for "Pragmr OnTime" from a 2-page content spec (Pag
 - Heads of delivery / PMO evaluating a delivery-prediction platform.
 - Service-team leads wanting capacity + dependency clarity.
 
-## Core Requirements (updated 2026-09-30, v3 — user: "use this logo, make it just 2 pages, simple")
-- v3 simplification (user picked "essentials only"): **Page 1 `/`** = Hero + Core Features ledger. **Page 2 `/intelligence`** = Intelligence hero (dark + orbit) + Intelligence Layer diagram + Final CTA. Removed: marquee, manage bento, problem grid, outcomes cards (component files kept for reuse, unimported). Section numbering re-run 01–04.
-- Official OnTime logo (user-supplied transparent PNG, 1444×536) used in nav + footer (`/ontime-logo.png`); favicon remains the matching clock-arc mark.
-- Hero: exact brief headline, sub, "See How OnTime Works" CTA → #features; masked line reveal; delivery-confidence dashboard card (78% gauge, ETA AUG 14 +2D, 5 signal bars, footer stats, Signal/Verdict float chips) with 3D tilt + scroll parallax; mouse-follow spotlight.
-- Core features: 8-row ledger, numbered, brand underline-grow hover (#features).
-- Intelligence break: dark ink section, "From project activity to delivery intelligence." + orbit graphic (#intelligence).
-- The OnTime Intelligence Layer: boxy node diagram (Team Activity → Execution Data → 8-signal table → Delivery Signals → Better Decisions → More Predictable Delivery) with growing vline connectors (#layer).
-- Final CTA (dark): "Make delivery decisions with data, not guesswork." + Explore OnTime (cross-page → /#features) + Book a Demo (on-site modal) (#demo).
-- Footer + back-to-top. All copy verbatim from the brief; dashboard mock values mirror pragmr.com's own hero illustration.
+## Core Requirements (updated 2026-09-30, v4 — user: "should be a different design from the branding site")
+- v4 art direction: OnTime gets its OWN identity, distinct from pragmr.com's light Swiss system — dark "mission control" theme (void #0A0B10, glass panels, indigo glows, amber signal accents, pill buttons, rounded cards, dot grids), display typeface Clash Display + body Satoshi (replacing pragmr's Cabinet Grotesk/General Sans).
+- Official OnTime logo rendered white via CSS mask (`.logo-white` over src/assets/ontime-logo.png) in nav (centered, shrink-on-scroll) + footer; favicon = clock-arrow glyph cut from the logo (favicon.png + apple-touch-icon).
+- v3 structure (2 pages): **Page 1 `/`** = Hero + Core Features ledger. **Page 2 `/intelligence`** = Intelligence hero (dark + orbit) + Intelligence Layer diagram + Final CTA (rounded brand-gradient panel with orbit graphic). Removed sections kept as unimported components.
+- Hero: brief headline (masked reveal, amber "delays", glowing "problems."), delivery-confidence console (78% gauge, ETA AUG 14 +2D, 5 signal bars, verdict/signal chips) with 3D tilt, mouse spotlight, pulse rings.
+- Demo modal: dark glass, email capture → POST /api/demo-requests (FastAPI + MongoDB). OG share card: dark 1200×630 with white logo + tagline (og/twitter tags in index.html).
 
 ## Verified
 - v2 structure (user request: "just 2 pages only"): BrowserRouter with 2 routes — `/` (Page 1: Hero + Marquee + Manage + Features) and `/intelligence` (Page 2: Intelligence hero + Problem + Outcomes + Intelligence Layer + Final CTA). ScrollManager resets scroll on route change and honors state.scrollTo; nav shows active page state; Explore OnTime cross-navigates home → #features; Book a Demo cross-navigates → /intelligence #demo; catch-all route renders Page 1.
