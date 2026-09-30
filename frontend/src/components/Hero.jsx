@@ -1,18 +1,115 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowDown, BarChart3, Users, TrendingUp, SlidersHorizontal } from "lucide-react";
 import { MaskedLines, FadeUp, EASE } from "./reveal";
 import { scrollToId } from "../lib/scroll";
 
-const SIGNALS = [
-  { label: "Schedule", v: 82, c: "#514EB3" },
-  { label: "Progress", v: 74, c: "#F59E0B" },
-  { label: "Capacity", v: 61, c: "#EF4444" },
-  { label: "Dependency", v: 91, c: "#10B981" },
-  { label: "Execution", v: 76, c: "#F59E0B" },
+function BIViz() {
+  return (
+    <svg viewBox="0 0 100 34" className="mt-3 w-full">
+      {[16, 30, 44, 58].map((h, i) => (
+        <motion.rect
+          key={i}
+          x={10 + i * 22}
+          width="12"
+          rx="1.5"
+          fill={i === 3 ? "#F59E0B" : "#514EB3"}
+          initial={{ height: 0, y: 32 }}
+          animate={{ height: h, y: 34 - h }}
+          transition={{ duration: 0.8, ease: EASE, delay: 1 + i * 0.12 }}
+        />
+      ))}
+    </svg>
+  );
+}
+
+function OfficeViz() {
+  return (
+    <div className="mt-3 flex items-center gap-2.5">
+      {["A.K.", "P.R.", "J.M.", "+5"].map((n, i) => (
+        <motion.span
+          key={n}
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: EASE, delay: 1 + i * 0.12 }}
+          className={`flex h-8 w-8 items-center justify-center rounded-full border font-mono text-[9px] ${
+            i === 0
+              ? "border-brand bg-brand text-white"
+              : "border-zinc-300 bg-white text-zinc-500"
+          } ${i > 0 ? "-ml-3" : ""}`}
+        >
+          {n}
+        </motion.span>
+      ))}
+      <span className="ml-1 flex items-center gap-1 font-mono text-[9px] uppercase tracking-widest text-emerald-600">
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+        Online
+      </span>
+    </div>
+  );
+}
+
+function PredictViz() {
+  return (
+    <svg viewBox="0 0 100 34" className="mt-3 w-full">
+      <path d="M8 30 A44 44 0 0 1 92 30" fill="none" stroke="#E4E4E7" strokeWidth="5" strokeLinecap="round" />
+      <motion.path
+        d="M8 30 A44 44 0 0 1 92 30"
+        fill="none"
+        stroke="#514EB3"
+        strokeWidth="5"
+        strokeLinecap="round"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 0.78 }}
+        transition={{ duration: 1.6, ease: EASE, delay: 1.1 }}
+      />
+      <motion.circle
+        cx="88"
+        cy="22"
+        r="3.5"
+        fill="#F59E0B"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.2, duration: 0.4 }}
+      />
+      <text x="34" y="33" fontSize="9" fontFamily="JetBrains Mono" fill="#52525B">
+        78%
+      </text>
+    </svg>
+  );
+}
+
+function CustomViz() {
+  const rows = [
+    { x: 62, c: "#514EB3" },
+    { x: 34, c: "#F59E0B" },
+    { x: 76, c: "#514EB3" },
+  ];
+  return (
+    <div className="mt-4 space-y-2.5">
+      {rows.map((r, i) => (
+        <div key={i} className="relative h-[3px] w-full rounded-full bg-zinc-200">
+          <motion.span
+            className="absolute top-1/2 h-3 w-3 -translate-y-1/2 rounded-full border-2 border-white shadow"
+            style={{ backgroundColor: r.c, left: 0 }}
+            initial={{ left: "4%" }}
+            animate={{ left: `${r.x}%` }}
+            transition={{ duration: 1, ease: EASE, delay: 1.1 + i * 0.15 }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const OUTCOMES = [
+  { n: "01", t: "Business Intelligence", Icon: BarChart3, Viz: BIViz },
+  { n: "02", t: "Virtual Office", Icon: Users, Viz: OfficeViz },
+  { n: "03", t: "Delivery Prediction", Icon: TrendingUp, Viz: PredictViz },
+  { n: "04", t: "Domain-Specific Customization", Icon: SlidersHorizontal, Viz: CustomViz },
 ];
 
-function DashboardCard() {
+function OutcomesCard() {
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const rx = useSpring(useTransform(my, [-0.5, 0.5], [6, -6]), { stiffness: 120, damping: 16 });
@@ -34,11 +131,11 @@ function DashboardCard() {
       <motion.div
         data-testid="hero-dashboard"
         style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
-        className="hero-tilt relative border border-line bg-paper shadow-[0_40px_80px_-40px_rgba(17,17,17,0.3)]"
+        className="relative border border-line bg-white shadow-[0_40px_80px_-40px_rgba(17,17,17,0.3)]"
       >
         <div className="flex items-center justify-between border-b border-line px-5 py-3">
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
-            OnTime <span className="text-zinc-300">/</span> Delivery Confidence
+            Pragmr <span className="text-zinc-300">/</span> Product Outcomes
           </p>
           <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-600">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
@@ -46,89 +143,42 @@ function DashboardCard() {
           </span>
         </div>
 
-        <div className="grid grid-cols-5 gap-4 px-5 py-6">
-          <div className="col-span-2" data-testid="hero-gauge">
-            <div className="relative w-full">
-              <svg viewBox="0 0 100 100" className="w-full">
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="41"
-                  fill="none"
-                  stroke="#E4E4E7"
-                  strokeWidth="3.5"
-                  pathLength="100"
-                  strokeDasharray="75 100"
-                  transform="rotate(135 50 50)"
-                />
-                <motion.circle
-                  cx="50"
-                  cy="50"
-                  r="41"
-                  fill="none"
-                  stroke="#514EB3"
-                  strokeWidth="3.5"
-                  pathLength="100"
-                  transform="rotate(135 50 50)"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 0.585 }}
-                  transition={{ duration: 1.8, ease: EASE, delay: 0.7 }}
-                />
-              </svg>
-              <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-                <p className="font-mono text-2xl font-medium leading-none text-ink">
-                  78<span className="text-sm text-zinc-400">%</span>
-                </p>
-                <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.22em] text-zinc-400">
-                  Confidence
-                </p>
+        <div className="grid grid-cols-2 gap-px bg-line">
+          {OUTCOMES.map(({ n, t, Icon, Viz }, i) => (
+            <motion.div
+              key={t}
+              data-testid={`hero-outcome-${n}`}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: EASE, delay: 0.6 + i * 0.12 }}
+              className="group bg-white p-4 transition-colors duration-300 hover:bg-brand-pale/60"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[9px] tracking-[0.2em] text-zinc-400">{n}</span>
+                <span className="flex h-8 w-8 items-center justify-center border border-line text-zinc-400 transition-colors duration-300 group-hover:border-brand group-hover:text-brand">
+                  <Icon size={14} strokeWidth={1.5} />
+                </span>
               </div>
-            </div>
-            <div className="mt-3 border border-line bg-white px-3 py-2 text-center">
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-400">
-                Expected ETA
-              </p>
-              <p className="font-mono text-sm font-medium text-ink">
-                AUG 14 <span className="text-amber-500">+2D</span>
-              </p>
-            </div>
-          </div>
-
-          <div className="col-span-3 flex flex-col justify-center gap-3">
-            {SIGNALS.map((s, i) => (
-              <div key={s.label}>
-                <div className="mb-1 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.18em]">
-                  <span className="text-zinc-500">{s.label}</span>
-                  <span className="text-ink">{s.v}%</span>
-                </div>
-                <div className="h-[3px] w-full bg-white">
-                  <motion.div
-                    className="h-full"
-                    style={{ backgroundColor: s.c }}
-                    initial={{ width: 0 }}
-                    animate={{ width: `${s.v}%` }}
-                    transition={{ duration: 1.1, ease: EASE, delay: 0.8 + i * 0.12 }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+              <h3 className="mt-2.5 font-display text-sm font-semibold leading-tight tracking-tight text-ink">
+                {t}
+              </h3>
+              <Viz />
+            </motion.div>
+          ))}
         </div>
 
         <div className="flex items-center justify-between border-t border-line px-5 py-3 font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-400">
           <span>
-            Capacity <span className="text-red-500">-12%</span>
+            Outcomes <span className="text-brand">01–04</span>
           </span>
-          <span>
-            Rework <span className="text-amber-500">+18%</span>
-          </span>
-          <span className="text-zinc-600">Scope Stable</span>
+          <span>One Platform</span>
+          <span className="text-emerald-600">Deliverable</span>
         </div>
       </motion.div>
 
       <div
         data-testid="hero-chip-risk"
-        className="absolute -left-6 top-16 hidden border border-line bg-white px-4 py-3 shadow-lg md:block"
+        className="absolute -left-10 top-[42%] hidden border border-line bg-white px-4 py-3 shadow-lg md:block"
       >
         <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-400">Signal</p>
         <p className="font-mono text-xs font-medium text-ink">
@@ -229,7 +279,7 @@ export default function Hero() {
         <div className="flex items-center px-5 py-12 md:px-10 lg:col-span-5 lg:py-16">
           <motion.div style={{ y: cardY }} className="w-full">
             <FadeUp delay={0.5} y={40}>
-              <DashboardCard />
+              <OutcomesCard />
             </FadeUp>
           </motion.div>
         </div>
