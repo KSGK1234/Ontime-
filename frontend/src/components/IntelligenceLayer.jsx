@@ -47,7 +47,7 @@ export default function IntelligenceLayer() {
 
       <div className="relative mx-auto max-w-2xl">
         <FadeUp className="text-center">
-          <Eyebrow num="03" className="text-center">
+          <Eyebrow num="04" className="text-center">
             How It Works
           </Eyebrow>
           <h2 className="mt-6 font-display text-4xl font-semibold tracking-tight leading-[1.05] text-white sm:text-5xl">

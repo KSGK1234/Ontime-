@@ -21,6 +21,7 @@ Build a marketing experience for "Pragmr OnTime" from a 2-page content spec (Pag
 - v3 structure (2 pages): **Page 1 `/`** = Hero + Core Features ledger. **Page 2 `/intelligence`** = Intelligence hero (dark + orbit) + Intelligence Layer diagram + Final CTA (rounded brand-gradient panel with orbit graphic). Removed sections kept as unimported components.
 - Hero: brief headline (masked reveal, amber "delays", glowing "problems."), delivery-confidence console (78% gauge, ETA AUG 14 +2D, 5 signal bars, verdict/signal chips) with 3D tilt, mouse spotlight, pulse rings.
 - Demo modal: dark glass, email capture → POST /api/demo-requests (FastAPI + MongoDB). OG share card: dark 1200×630 with white logo + tagline (og/twitter tags in index.html).
+- v4.1: Outcomes section restored on Page 2 (between intelligence hero and layer diagram) in dark style — glass cards, hover glow + lift, item rows with brand diamonds, outcome chips; numbering 01–05 (features, intelligence, outcomes, layer, get started).
 
 ## Verified
 - v2 structure (user request: "just 2 pages only"): BrowserRouter with 2 routes — `/` (Page 1: Hero + Marquee + Manage + Features) and `/intelligence` (Page 2: Intelligence hero + Problem + Outcomes + Intelligence Layer + Final CTA). ScrollManager resets scroll on route change and honors state.scrollTo; nav shows active page state; Explore OnTime cross-navigates home → #features; Book a Demo cross-navigates → /intelligence #demo; catch-all route renders Page 1.

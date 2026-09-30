@@ -11,7 +11,7 @@ export default function FinalCTA() {
         <div className="relative grid items-center gap-10 p-8 md:p-14 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <FadeUp y={14}>
-              <Eyebrow num="04" className="text-indigo-200/70">
+              <Eyebrow num="05" className="text-indigo-200/70">
                 Get Started
               </Eyebrow>
             </FadeUp>
