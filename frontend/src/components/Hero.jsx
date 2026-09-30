@@ -367,7 +367,7 @@ export default function Hero() {
         <div className="flex flex-col justify-center border-b border-line px-5 py-16 md:px-10 md:py-24 lg:col-span-7 lg:border-b-0 lg:border-r">
           <FadeUp y={14}>
             <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-brand">
-              Project delivery prediction platform
+              For service teams
             </p>
           </FadeUp>
 
