@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -12,8 +12,16 @@ const LINKS = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const goPage = (to) => {
     setOpen(false);
@@ -28,7 +36,11 @@ export default function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-paper/90 backdrop-blur-md">
-      <nav className="mx-auto grid h-16 max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-5 md:px-10">
+      <nav
+        className={`mx-auto grid max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-5 transition-all duration-300 md:px-10 ${
+          scrolled ? "h-14" : "h-16"
+        }`}
+      >
         <div className="flex items-center">
           <button
             data-testid="nav-mobile-toggle"
@@ -68,7 +80,7 @@ export default function Nav() {
           className="cursor-pointer justify-self-center"
           aria-label="Pragmr OnTime — home"
         >
-          <Logo />
+          <Logo className={`w-auto transition-all duration-300 ${scrolled ? "h-5 md:h-6" : "h-7"}`} />
         </button>
 
         <div className="flex items-center justify-end">
