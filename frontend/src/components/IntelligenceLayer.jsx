@@ -43,7 +43,7 @@ export default function IntelligenceLayer() {
   return (
     <section id="layer" className="border-t border-line bg-white px-5 py-16 md:px-10 md:py-20">
       <FadeUp className="text-center">
-        <Eyebrow num="06" className="text-center">
+        <Eyebrow num="03" className="text-center">
           How It Works
         </Eyebrow>
         <h2 className="mx-auto mt-6 max-w-2xl font-display text-4xl font-medium tracking-tighter leading-[1.05] text-ink sm:text-5xl lg:text-6xl">

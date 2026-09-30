@@ -205,7 +205,7 @@ export default function Hero() {
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <button
                 data-testid="hero-see-how-button"
-                onClick={() => scrollToId("manage")}
+                onClick={() => scrollToId("features")}
                 className="group flex cursor-pointer items-center gap-3 bg-brand px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-brand-dark"
               >
                 See How OnTime Works

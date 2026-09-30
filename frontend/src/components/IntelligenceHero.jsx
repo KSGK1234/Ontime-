@@ -8,7 +8,7 @@ export default function IntelligenceHero() {
       <div className="grid grid-cols-1 items-center lg:grid-cols-12">
         <div className="px-5 py-20 md:px-10 md:py-28 lg:col-span-7">
           <FadeUp y={16}>
-            <Eyebrow num="03" className="text-zinc-500">
+            <Eyebrow num="02" className="text-zinc-500">
               Delivery Intelligence
             </Eyebrow>
           </FadeUp>

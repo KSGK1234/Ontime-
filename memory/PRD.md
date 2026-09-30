@@ -15,16 +15,14 @@ Build a marketing experience for "Pragmr OnTime" from a 2-page content spec (Pag
 - Heads of delivery / PMO evaluating a delivery-prediction platform.
 - Service-team leads wanting capacity + dependency clarity.
 
-## Core Requirements (all shipped 2026-09-30)
-- Hero: exact brief headline, sub, "See How OnTime Works" CTA → #manage; masked line reveal; delivery-confidence dashboard card (78% gauge, ETA AUG 14 +2D, 5 signal bars, footer stats, Signal/Verdict float chips) with 3D tilt + scroll parallax; mouse-follow spotlight.
-- Marquee: 5 outcome phrases (slow editorial loop, diamond separators).
-- What OnTime helps you manage: 8 hairline bento cells w/ animated mini-viz, hover flip to brand (#manage).
+## Core Requirements (updated 2026-09-30, v3 — user: "use this logo, make it just 2 pages, simple")
+- v3 simplification (user picked "essentials only"): **Page 1 `/`** = Hero + Core Features ledger. **Page 2 `/intelligence`** = Intelligence hero (dark + orbit) + Intelligence Layer diagram + Final CTA. Removed: marquee, manage bento, problem grid, outcomes cards (component files kept for reuse, unimported). Section numbering re-run 01–04.
+- Official OnTime logo (user-supplied transparent PNG, 1444×536) used in nav + footer (`/ontime-logo.png`); favicon remains the matching clock-arc mark.
+- Hero: exact brief headline, sub, "See How OnTime Works" CTA → #features; masked line reveal; delivery-confidence dashboard card (78% gauge, ETA AUG 14 +2D, 5 signal bars, footer stats, Signal/Verdict float chips) with 3D tilt + scroll parallax; mouse-follow spotlight.
 - Core features: 8-row ledger, numbered, brand underline-grow hover (#features).
 - Intelligence break: dark ink section, "From project activity to delivery intelligence." + orbit graphic (#intelligence).
-- The Problem: 5 question cells + brand "OnTime connects the signals." cell (#problem).
-- From Features → Business Outcomes: 5 outcome cards with arrow chips, hover flip (#outcomes).
 - The OnTime Intelligence Layer: boxy node diagram (Team Activity → Execution Data → 8-signal table → Delivery Signals → Better Decisions → More Predictable Delivery) with growing vline connectors (#layer).
-- Final CTA (dark): "Make delivery decisions with data, not guesswork." + Explore OnTime (→ #features) + Book a Demo (→ pragmr.com, external; only external link since no demo page was in scope) (#demo).
+- Final CTA (dark): "Make delivery decisions with data, not guesswork." + Explore OnTime (cross-page → /#features) + Book a Demo (on-site modal) (#demo).
 - Footer + back-to-top. All copy verbatim from the brief; dashboard mock values mirror pragmr.com's own hero illustration.
 
 ## Verified
