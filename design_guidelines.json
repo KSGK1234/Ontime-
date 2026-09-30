@@ -1,0 +1,198 @@
+{
+  "brand": {
+    "name": "Pragmr OnTime",
+    "tagline": "Predict Project Delivery Before Delays Happen",
+    "context": "Pragmr OnTime is an Awwwards-caliber project delivery intelligence platform. The brand identity leverages deep indigo (#514EB3) and dark ink space tones to create a high-density, editorial tech aesthetic that conveys foresight, mathematical precision, and absolute project clarity.",
+    "page_structure": "Single long-scrolling marketing experience with internal smooth-scroll section anchors (#hero, #intelligence, #manage, #ledger, #outcomes, #cta)."
+  },
+  "typography": {
+    "primary_font": "General Sans",
+    "heading_font": "Cabinet Grotesk",
+    "mono_font": "JetBrains Mono",
+    "body_font": "Outfit",
+    "forbidden_fonts": ["Inter", "Roboto", "Space Grotesk", "Open Sans"],
+    "hierarchy": {
+      "hero_h1": "text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]",
+      "section_h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-snug",
+      "card_h3": "text-xl sm:text-2xl font-semibold tracking-tight",
+      "data_label": "font-mono text-xs uppercase tracking-[0.2em] text-indigo-300/80",
+      "body_text": "text-base sm:text-lg text-slate-300/90 leading-relaxed",
+      "caption": "text-xs font-mono text-slate-400"
+    }
+  },
+  "colors": {
+    "background": {
+      "main": "#0B0C10",
+      "card": "#12141F",
+      "card_hover": "#1A1D2D",
+      "glass": "rgba(18, 20, 31, 0.65)"
+    },
+    "brand": {
+      "primary": "#514EB3",
+      "primary_hover": "#6360D4",
+      "primary_glow": "rgba(81, 78, 179, 0.35)",
+      "indigo_light": "#8180E0"
+    },
+    "semantic_accents": {
+      "delay_amber": "#F59E0B",
+      "delay_amber_glow": "rgba(245, 158, 11, 0.25)",
+      "ontrack_green": "#10B981",
+      "ontrack_green_glow": "rgba(16, 185, 129, 0.25)",
+      "critical_red": "#EF4444"
+    },
+    "neutrals": {
+      "text_primary": "#F8FAFC",
+      "text_secondary": "#94A3B8",
+      "text_muted": "#64748B",
+      "border": "rgba(255, 255, 255, 0.1)",
+      "border_glow": "rgba(81, 78, 179, 0.4)"
+    }
+  },
+  "visual_enhancers": {
+    "grain_overlay": "repeating-linear-gradient with subtle SVG noise texture at 3% opacity",
+    "dot_grid": "radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px) with 24px 24px background-size",
+    "tracing_beam": "Framer Motion animated SVG beam tracing card and container edges",
+    "glassmorphism": "backdrop-blur-xl bg-[#12141F]/70 border border-white/10 shadow-[0_16px_40px_rgba(0,0,0,0.5)]",
+    "glow_effects": "drop-shadow-[0_0_20px_rgba(81,78,179,0.3)]"
+  },
+  "sections_blueprint": {
+    "hero": {
+      "id": "hero",
+      "layout": "Asymmetric split grid (7 cols text & CTA / 5 cols execution dashboard console mock)",
+      "headline": "Predict Project Delivery Before Delays Happen",
+      "subheading": "Pragmr OnTime connects live capacity, dependency telemetry, and AI forecasting into a real-time risk mitigation engine for modern engineering teams.",
+      "ctas": [
+        { "text": "Explore Live Telemetry", "target": "#intelligence", "style": "primary_pill" },
+        { "text": "View Delivery Ledger", "target": "#ledger", "style": "outline_glass" }
+      ],
+      "console_mock": {
+        "title": "EXECUTION_CONSOLE_V2.4",
+        "components": [
+          "Capacity Bars (Real-time load % per sprint node)",
+          "Dependency Chain (Interactive node connections with latency indicators)",
+          "Smart-Assign Chip (Auto-routing overload tasks to available engineers)",
+          "Prediction Gauge (98.4% On-Time Confidence Score with amber delay warnings)"
+        ]
+      }
+    },
+    "marquee": {
+      "id": "marquee",
+      "placement": "Directly below Hero section break",
+      "type": "Dual-layer kinetic ticker",
+      "top_layer": "PREDICTIVE INTELLIGENCE • ZERO CRITICAL DELAYS • AUTOMATED BOTTLENECK DETECTION • REAL-TIME CAPACITY MAPPING",
+      "bottom_layer": "98.4% CONFIDENCE • 14 DAYS EARLY DETECTION • DEPENDENCY MAPPER • RESOURCE BALANCER",
+      "speed": "25s infinite smooth scroll with low opacity border separator"
+    },
+    "intelligence_layer": {
+      "id": "intelligence",
+      "title": "Scroll-Linked Intelligence Layer",
+      "subtitle": "How Pragmr OnTime forecast algorithm operates across your stack",
+      "nodes": [
+        { "step": "01", "name": "Telemetry Ingestion", "desc": "Ingests Jira, GitHub, and Slack velocity signals in real-time." },
+        { "step": "02", "name": "Dependency Graphing", "desc": "Maps cross-team blocking paths and detects hidden resource contention." },
+        { "step": "03", "name": "Monte Carlo Prediction", "desc": "Simulates 10,000 project outcomes to calculate exact delay risk percentage." },
+        { "step": "04", "name": "Pre-Emptive Assignment", "desc": "Recommends load shifts before deadline breaches occur." }
+      ]
+    },
+    "bento_manage": {
+      "id": "manage",
+      "title": "8 Dimensions of Project Delivery Control",
+      "subtitle": "Comprehensive management items structured in Tetris Grid Mode A",
+      "layout": "grid-cols-1 md:grid-cols-8 lg:grid-cols-12 gap-6",
+      "items": [
+        { "title": "Resource Capacity Matrix", "span": "col-span-full md:col-span-8", "badge": "Core Engine" },
+        { "title": "Dependency Risk Map", "span": "col-span-full md:col-span-4", "badge": "Telemetry" },
+        { "title": "Smart Task Routing", "span": "col-span-full md:col-span-4", "badge": "AI Assign" },
+        { "title": "Delay Pre-Warning Radar", "span": "col-span-full md:col-span-8", "badge": "Predictive" },
+        { "title": "Sprint Bottleneck Heatmap", "span": "col-span-full md:col-span-6", "badge": "Analytics" },
+        { "title": "Cross-Team Sync Ledger", "span": "col-span-full md:col-span-6", "badge": "Workflow" },
+        { "title": "Executive Delivery Forecast", "span": "col-span-full md:col-span-7", "badge": "Reporting" },
+        { "title": "Automated Re-indexing", "span": "col-span-full md:col-span-5", "badge": "Automation" }
+      ]
+    },
+    "section_break_parallax": {
+      "type": "Parallax dark control room visual with layered telemetry graphic and glass stat overlay",
+      "image_url": "https://images.unsplash.com/photo-1720962158937-7ea890052166?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwxfHxkYXJrJTIwZnV0dXJpc3RpYyUyMHRlbGVtZXRyeSUyMGludGVyZmFjZSUyMGRhdGElMjBtYXRyaXglMjBuaWdodCUyMHZpc3VhbCUyMGFuYWx5dGljc3xlbnwwfHx8fDE3OTA3NzA4Nzd8MA&ixlib=rb-4.1.0&q=85",
+      "stat": "14.2 Days Earlier Delay Detection Than Standard Gantt Tools"
+    },
+    "core_ledger": {
+      "id": "ledger",
+      "title": "The Core Delivery Ledger",
+      "subtitle": "8 Core features formatted in high-density technical rows",
+      "layout": "Single column dense technical ledger with monospace data indicators and hover beam highlight",
+      "features": [
+        "Predictive Milestone Simulation",
+        "Automated Blocker Resolution Chains",
+        "Developer Workload & Burnout Guardrails",
+        "Multi-Repo Pull Request Velocity Tracking",
+        "Dynamic Buffer Time Recalibration",
+        "Real-Time Slack & Teams Escalation Hooks",
+        "Custom Executive Risk Digest",
+        "Granular Historical Velocity Audit"
+      ]
+    },
+    "outcomes": {
+      "id": "outcomes",
+      "title": "Quantifiable Delivery Impact",
+      "metrics": [
+        { "value": "94.8%", "label": "On-Time Milestone Rate", "delta": "+28% vs legacy PM" },
+        { "value": "12 Days", "label": "Average Early Warning Window", "delta": "3.5x faster reaction" },
+        { "value": "0", "label": "Unplanned Weekend Crunch Sprints", "delta": "-100% team friction" },
+        { "value": "< 2 min", "label": "Setup & Telemetry Connection", "delta": "Instant sync" }
+      ]
+    },
+    "final_cta": {
+      "id": "cta",
+      "headline": "Stop Reacting to Delays. Start Preventing Them.",
+      "subheadline": "Transform your project execution with Pragmr OnTime predictive delivery intelligence.",
+      "buttons": [
+        { "text": "Schedule Command Demo", "action": "open_demo_modal", "style": "primary_large" },
+        { "text": "Explore Console Features", "target": "#hero", "style": "secondary_glass" }
+      ]
+    },
+    "footer": {
+      "brand_title": "PRAGMR ONTIME",
+      "copyright": "© 2026 Pragmr Inc. All rights reserved. Delivery Intelligence System.",
+      "links": [
+        { "label": "Telemetry", "href": "#intelligence" },
+        { "label": "Manage Items", "href": "#manage" },
+        { "label": "Core Ledger", "href": "#ledger" },
+        { "label": "Outcomes", "href": "#outcomes" }
+      ]
+    }
+  },
+  "motion_system": {
+    "lenis_scroll": "Lenis smooth scrolling engine enabled on window for momentum scroll feel",
+    "framer_motion": {
+      "masked_line_reveal": "y: [30, 0], opacity: [0, 1], transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }",
+      "staggered_cards": "staggerChildren: 0.1, delayChildren: 0.2",
+      "hover_card": "whileHover: { y: -4, scale: 1.01 }, transition: { duration: 0.2 }",
+      "scroll_beam": "Scroll-linked SVG motion beam tracking active scroll progress along the page margin"
+    }
+  },
+  "image_urls": [
+    {
+      "category": "Hero Console Background / Visual Asset",
+      "url": "https://images.unsplash.com/photo-1720962158789-9389a4f399da?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwyfHxkYXJrJTIwZnV0dXJpc3RpYyUyMHRlbGVtZXRyeSUyMGludGVyZmFjZSUyMGRhdGElMjBtYXRyaXglMjBuaWdodCUyMHZpc3VhbCUyMGFuYWx5dGljc3xlbnwwfHx8fDE3OTA3NzA4Nzd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Control panel on dark background with cyan & amber telemetry lights"
+    },
+    {
+      "category": "Parallax Section Break",
+      "url": "https://images.unsplash.com/photo-1720962158937-7ea890052166?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDZ8MHwxfHNlYXJjaHwxfHxkYXJrJTIwZnV0dXJpc3RpYyUyMHRlbGVtZXRyeSUyMGludGVyZmFjZSUyMGRhdGElMjBtYXRyaXglMjBuaWdodCUyMHZpc3VhbCUyMGFuYWx5dGljc3xlbnwwfHx8fDE3OTA3NzA4Nzd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Futuristic telemetry interface panel in dark environment"
+    },
+    {
+      "category": "Telemetry Data Center Grid",
+      "url": "https://images.unsplash.com/photo-1561233835-f937539b95b9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzV8MHwxfHNlYXJjaHw0fHxkYXJrJTIwZGF0YSUyMGNlbnRlciUyMHNlcnZlciUyMHJhY2slMjBnbG93aW5nfGVufDB8fHx8MTc5MDc3MDg4M3ww&ixlib=rb-4.1.0&q=85",
+      "description": "Glowing data matrix lights on dark server wall"
+    }
+  ],
+  "instructions_to_main_agent": [
+    "Implementation files must use standard React Javascript (.js) components.",
+    "Ensure every interactive button, input, navigation link, card, and metric container includes a kebab-case data-testid attribute (e.g. data-testid='hero-cta-button', data-testid='bento-card-capacity-matrix').",
+    "DO NOT use fully transparent backgrounds under text. Always use glassmorphism with backdrop-blur-xl and semi-opaque background fills (e.g., bg-[#12141F]/80).",
+    "All navigation links in the fixed header must link smoothly to page section IDs (#hero, #intelligence, #manage, #ledger, #outcomes, #cta).",
+    "Use Lucide icons for high-contrast technical indicators (AlertTriangle, Activity, Cpu, ShieldCheck, GitPullRequest, Layers, Sparkles, BarChart3).",
+    "Follow dark editorial theme rigorously with #0B0C10 base, #514EB3 indigo brand glow, #F59E0B delay amber, and #10B981 on-track green."
+  ]
+}
