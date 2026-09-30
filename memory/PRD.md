@@ -15,9 +15,13 @@ Build a marketing experience for "Pragmr OnTime" from a 2-page content spec (Pag
 - Heads of delivery / PMO evaluating a delivery-prediction platform.
 - Service-team leads wanting capacity + dependency clarity.
 
-## Core Requirements (updated 2026-09-30, v5 — user: "same aesthetic like branding page")
-- v5 final direction: back to pragmr.com's light branding aesthetic site-wide (paper #F4F4F2, ink #131316, hairline `line` grids, square mono buttons, white cards with hover-flip to brand) while keeping the official OnTime logo in the nav/footer, the clock-arrow favicon, the dark ink intelligence-hero + CTA sections (pragmr.com's own inverse pattern), Cabinet Grotesk / General Sans / JetBrains Mono, light OG share card (1200×630), demo modal, and demo-request storage.
-- 2-page structure: **Page 1 `/`** = Hero (product eyebrow "Project delivery prediction platform", delivery-confidence dashboard, 3D tilt, spotlight) + Core Features ledger (8 rows, brand underline-grow hover). **Page 2 `/intelligence`** = Intelligence hero (orbit graphic) + Outcomes (5 glass cards with product-grounded item rows + outcome chips) + Intelligence Layer diagram + Final CTA (dark ink, orbit graphic, Explore OnTime cross-page → /#features, Book a Demo modal).
+## Core Requirements (updated 2026-09-30, v6 — FINAL: "difference in presentation but same aesthetic mandatory")
+- v6 art direction: one pragmr aesthetic (paper/ink tokens, Cabinet Grotesk + General Sans + JetBrains Mono, brand #514EB3, amber signals, hairlines, square mono uppercase buttons, numbered eyebrows, grain) with TWO presentations:
+  - **Page 1 — Product `/`**: LIGHT paper presentation. Split hero (product eyebrow "Project delivery prediction platform", masked headline, delivery-confidence dashboard w/ 3D tilt + mouse spotlight) + Core Features ledger (8 rows, brand underline-grow hover).
+  - **Page 2 — Branding/Intelligence `/intelligence`**: INVERTED dark-ink presentation (pragmr.com's own dark-CTA pattern applied page-wide): dark intelligence hero + orbit graphic, outcomes on dark (hairline cards, hover flip to brand), dark Intelligence Layer diagram, dark final CTA (Explore OnTime cross-page → /#features, Book a Demo modal).
+- Official OnTime logo (user-supplied PNG) in nav (centered, shrink-on-scroll h-7→h-5.5/6) + footer; favicon.png + apple-touch-icon = clock-arrow glyph cut from the logo.
+- OG share card: dark ink 1200×630, white logo, "delays" amber (og/twitter tags in index.html pointing to preview URL — update on custom domain).
+- Demo modal (light paper panel): email capture → POST /api/demo-requests (FastAPI + MongoDB, collection demo_requests); GET /api/demo-requests lists them.
 
 ## Verified
 - v2 structure (user request: "just 2 pages only"): BrowserRouter with 2 routes — `/` (Page 1: Hero + Marquee + Manage + Features) and `/intelligence` (Page 2: Intelligence hero + Problem + Outcomes + Intelligence Layer + Final CTA). ScrollManager resets scroll on route change and honors state.scrollTo; nav shows active page state; Explore OnTime cross-navigates home → #features; Book a Demo cross-navigates → /intelligence #demo; catch-all route renders Page 1.

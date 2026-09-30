@@ -4,8 +4,11 @@ import OrbitGraphic from "./OrbitGraphic";
 
 export default function IntelligenceHero() {
   return (
-    <section id="intelligence" className="relative overflow-hidden border-t border-line bg-ink">
-      <div className="grid grid-cols-1 items-center lg:grid-cols-12">
+    <section id="intelligence" className="relative overflow-hidden border-y border-white/[0.07] bg-ink">
+      <div className="dot-grid absolute inset-0 opacity-50" />
+      <div className="absolute right-[-200px] top-1/2 h-[560px] w-[560px] -translate-y-1/2 rounded-full bg-brand/25 blur-[140px]" />
+
+      <div className="relative grid grid-cols-1 items-center lg:grid-cols-12">
         <div className="px-5 py-20 md:px-10 md:py-28 lg:col-span-7">
           <FadeUp y={16}>
             <Eyebrow num="02" className="text-zinc-500">
@@ -15,7 +18,7 @@ export default function IntelligenceHero() {
           <MaskedLines
             mode="view"
             delay={0.1}
-            className="mt-6 flex flex-col gap-2 font-display text-4xl tracking-tighter leading-[1.12] text-white sm:text-5xl lg:text-6xl"
+            className="mt-6 flex flex-col gap-2 font-display text-4xl font-medium tracking-tighter leading-[1.12] text-white sm:text-5xl lg:text-6xl"
             lines={[
               <span className="font-light">From project activity</span>,
               <span className="font-bold">

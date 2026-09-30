@@ -7,7 +7,7 @@ import { openDemoModal } from "../lib/ui";
 export default function FinalCTA() {
   const navigate = useNavigate();
   return (
-    <section id="demo" className="border-t border-line bg-ink px-5 py-16 md:px-10 md:py-24">
+    <section id="demo" className="border-t border-white/[0.07] bg-ink px-5 py-16 md:px-10 md:py-24">
       <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-7">
           <FadeUp y={14}>
