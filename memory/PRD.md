@@ -34,5 +34,8 @@ Build a marketing experience for "Pragmr OnTime" from a 2-page content spec (Pag
 
 ## Backlog (not built)
 - P0: none pending.
-- P1: Demo request form/modal (currently Book a Demo scrolls to the CTA section / pragmr.com link).
+- P1: none pending.
 - P2: SEO audit pass, OG image, logo-wall marquee like pragmr.com proof section.
+
+## Demo Requests (added 2026-09-30)
+- Book a Demo modal on both pages (nav, mobile nav, final CTA) — email capture with validation, success state; posts to POST /api/demo-requests (FastAPI + MongoDB, collection demo_requests: {id, email, created_at}); GET /api/demo-requests lists submissions. Verified: curl valid/invalid/GET + full UI flow via screenshots.

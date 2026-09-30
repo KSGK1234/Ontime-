@@ -4,6 +4,7 @@ import Lenis from "lenis";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import DemoModal from "./components/DemoModal";
 import Home from "./pages/Home";
 import IntelligencePage from "./pages/IntelligencePage";
 import { scrollToId } from "./lib/scroll";
@@ -54,6 +55,7 @@ function App() {
           <Footer />
         </div>
         <BackToTop />
+        <DemoModal />
       </div>
     </BrowserRouter>
   );

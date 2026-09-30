@@ -2,6 +2,7 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { MaskedLines, Eyebrow, FadeUp } from "./reveal";
 import OrbitGraphic from "./OrbitGraphic";
+import { openDemoModal } from "../lib/ui";
 
 export default function FinalCTA() {
   const navigate = useNavigate();
@@ -45,16 +46,14 @@ export default function FinalCTA() {
                 Explore OnTime
                 <ArrowDown size={16} className="transition-transform duration-300 group-hover:translate-y-1" />
               </button>
-              <a
+              <button
                 data-testid="final-book-demo-button"
-                href="https://www.pragmr.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-3 border border-zinc-600 px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:border-brand hover:bg-brand"
+                onClick={openDemoModal}
+                className="group flex cursor-pointer items-center gap-3 border border-zinc-600 px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:border-brand hover:bg-brand"
               >
                 Book a Demo
                 <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
+              </button>
             </div>
           </FadeUp>
 

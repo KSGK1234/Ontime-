@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
-import { scrollToId } from "../lib/scroll";
+import { openDemoModal } from "../lib/ui";
 
 const LINKS = [
   { label: "Product", to: "/" },
@@ -23,8 +23,7 @@ export default function Nav() {
 
   const goDemo = () => {
     setOpen(false);
-    if (pathname !== "/intelligence") navigate("/intelligence", { state: { scrollTo: "demo" } });
-    else scrollToId("demo");
+    openDemoModal();
   };
 
   return (

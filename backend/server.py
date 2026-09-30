@@ -1,8 +1,9 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
+import re
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
@@ -29,13 +30,16 @@ api_router = APIRouter(prefix="/api")
 # Define Models
 class StatusCheck(BaseModel):
     model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
-    
+
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     client_name: str
     timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class StatusCheckCreate(BaseModel):
     client_name: str
+
+class DemoRequestCreate(BaseModel):
+    email: str
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
@@ -65,6 +69,24 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+@api_router.post("/demo-requests")
+async def create_demo_request(input: DemoRequestCreate):
+    email = input.email.strip().lower()
+    if not re.match(r"^[^\s@]+@[^\s@]+\.[^\s@]+$", email):
+        raise HTTPException(status_code=400, detail="Invalid email address")
+    doc = {
+        "id": str(uuid.uuid4()),
+        "email": email,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    }
+    await db.demo_requests.insert_one(doc)
+    return {"ok": True, "id": doc["id"], "email": doc["email"]}
+
+@api_router.get("/demo-requests")
+async def get_demo_requests():
+    items = await db.demo_requests.find({}, {"_id": 0}).sort("created_at", -1).to_list(100)
+    return {"count": len(items), "requests": items}
 
 # Include the router in the main app
 app.include_router(api_router)
