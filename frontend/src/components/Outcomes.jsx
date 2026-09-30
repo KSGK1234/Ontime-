@@ -7,31 +7,51 @@ const OUTCOMES = [
     title: "Better resource decisions",
     desc: "Understand skills, availability and workload before assigning work.",
     outcome: "Right work to the right person",
-    items: ["Skills match before assignment", "Availability & workload snapshot", "Overload warning before hand-off"],
+    items: [
+      "Skills & ownership mapped per person",
+      "Availability, workload & leave in one view",
+      "Smart Assign suggests the right person",
+    ],
   },
   {
     title: "Earlier risk visibility",
     desc: "Identify aging work, blockers, rework and changing execution patterns.",
     outcome: "Spot delivery risks earlier",
-    items: ["Aging work flagged automatically", "Blocker alerts with downstream impact", "Rework trend signals"],
+    items: [
+      "Aging work surfaced early",
+      "Blocked tasks & downstream impact",
+      "Rework pace vs delivery pace",
+    ],
   },
   {
     title: "Better project control",
     desc: "Connect tasks, dependencies and milestones instead of managing them separately.",
     outcome: "More predictable project execution",
-    items: ["Tasks linked to dependencies", "Milestones tied to execution", "One view instead of status pings"],
+    items: [
+      "Dependencies linked to delivery dates",
+      "Milestones connected to task execution",
+      "One execution dashboard",
+    ],
   },
   {
     title: "Data-driven decisions",
     desc: "Use actual execution signals rather than relying only on memory, assumptions or manual status updates.",
     outcome: "Better delivery decisions",
-    items: ["Execution signals replace guesswork", "Historical pace vs current plan", "Live capacity over manual updates"],
+    items: [
+      "Your own execution data, not benchmarks",
+      "Historical delivery pace in every estimate",
+      "Live signals over manual status updates",
+    ],
   },
   {
     title: "Continuous improvement",
     desc: "Understand cycle time, WIP, bottlenecks, rework and other execution patterns.",
     outcome: "Improve the way projects are delivered",
-    items: ["Cycle time patterns", "WIP and bottleneck trends", "Rework hotspots over time"],
+    items: [
+      "Cycle time & WIP patterns",
+      "Bottleneck hotspots over time",
+      "Rework and delay trends",
+    ],
   },
 ];
 
