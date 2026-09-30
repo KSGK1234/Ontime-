@@ -1,9 +1,10 @@
 import { ArrowRight, ArrowDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { MaskedLines, Eyebrow, FadeUp } from "./reveal";
 import OrbitGraphic from "./OrbitGraphic";
-import { scrollToId } from "../lib/scroll";
 
 export default function FinalCTA() {
+  const navigate = useNavigate();
   return (
     <section id="demo" className="border-t border-line bg-ink px-5 py-16 md:px-10 md:py-24">
       <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-8">
@@ -38,7 +39,7 @@ export default function FinalCTA() {
             <div className="mt-12 flex flex-wrap items-center gap-4">
               <button
                 data-testid="final-explore-ontime-button"
-                onClick={() => scrollToId("features")}
+                onClick={() => navigate("/", { state: { scrollTo: "features" } })}
                 className="group flex cursor-pointer items-center gap-3 bg-white px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:bg-brand hover:text-white"
               >
                 Explore OnTime

@@ -28,10 +28,11 @@ Build a marketing experience for "Pragmr OnTime" from a 2-page content spec (Pag
 - Footer + back-to-top. All copy verbatim from the brief; dashboard mock values mirror pragmr.com's own hero illustration.
 
 ## Verified
-- Desktop 1440: hero, manage bento, features, intelligence break, problem, outcomes, layer, CTA, footer — all screenshot-checked; no overflow-x; no console runtime errors (fixed: missing motion import, clipped whileInView masked lines, stale tailwind config).
-- Mobile 390: hero clean, headline wraps, no overflow-x; full mobile scroll clean.
+- v2 structure (user request: "just 2 pages only"): BrowserRouter with 2 routes — `/` (Page 1: Hero + Marquee + Manage + Features) and `/intelligence` (Page 2: Intelligence hero + Problem + Outcomes + Intelligence Layer + Final CTA). ScrollManager resets scroll on route change and honors state.scrollTo; nav shows active page state; Explore OnTime cross-navigates home → #features; Book a Demo cross-navigates → /intelligence #demo; catch-all route renders Page 1.
+- Desktop 1440: both pages' sections screenshot-checked; route click-through, deep-link /intelligence, and Explore OnTime cross-page scroll verified; no overflow-x; no console runtime errors.
+- Mobile 390: clean, no overflow-x.
 
 ## Backlog (not built)
 - P0: none pending.
-- P1: Demo request form/modal (currently Book a Demo → pragmr.com); dedicated /ontime route splitting Page 1 / Page 2.
+- P1: Demo request form/modal (currently Book a Demo scrolls to the CTA section / pragmr.com link).
 - P2: SEO audit pass, OG image, logo-wall marquee like pragmr.com proof section.

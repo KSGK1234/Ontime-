@@ -1,17 +1,25 @@
 import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import Nav from "./components/Nav";
-import Hero from "./components/Hero";
-import Marquee from "./components/Marquee";
-import Manage from "./components/Manage";
-import Features from "./components/Features";
-import IntelligenceHero from "./components/IntelligenceHero";
-import Problem from "./components/Problem";
-import Outcomes from "./components/Outcomes";
-import IntelligenceLayer from "./components/IntelligenceLayer";
-import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import Home from "./pages/Home";
+import IntelligencePage from "./pages/IntelligencePage";
+import { scrollToId } from "./lib/scroll";
+
+function ScrollManager() {
+  const { pathname, state } = useLocation();
+  useEffect(() => {
+    if (state?.scrollTo) {
+      const t = setTimeout(() => scrollToId(state.scrollTo), 400);
+      return () => clearTimeout(t);
+    }
+    if (window.__lenis) window.__lenis.scrollTo(0, { immediate: true });
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function App() {
   useEffect(() => {
@@ -31,24 +39,23 @@ function App() {
   }, []);
 
   return (
-    <div className="grain min-h-screen bg-paper text-ink">
-      <Nav />
-      <div className="relative mx-auto max-w-[1440px] border-x border-line">
-        <main>
-          <Hero />
-          <Marquee />
-          <Manage />
-          <Features />
-          <IntelligenceHero />
-          <Problem />
-          <Outcomes />
-          <IntelligenceLayer />
-          <FinalCTA />
-        </main>
-        <Footer />
+    <BrowserRouter>
+      <ScrollManager />
+      <div className="grain min-h-screen bg-paper text-ink">
+        <Nav />
+        <div className="relative mx-auto max-w-[1440px] border-x border-line">
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/intelligence" element={<IntelligencePage />} />
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+        <BackToTop />
       </div>
-      <BackToTop />
-    </div>
+    </BrowserRouter>
   );
 }
 

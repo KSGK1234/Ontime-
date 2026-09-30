@@ -1,21 +1,30 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import { scrollToId } from "../lib/scroll";
 
 const LINKS = [
-  { label: "Product", id: "manage" },
-  { label: "Features", id: "features" },
-  { label: "Intelligence", id: "intelligence" },
-  { label: "Outcomes", id: "outcomes" },
+  { label: "Product", to: "/" },
+  { label: "Intelligence", to: "/intelligence" },
 ];
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const go = (id) => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const goPage = (to) => {
     setOpen(false);
-    scrollToId(id);
+    if (pathname !== to) navigate(to);
+    else window.scrollTo({ top: 0 });
+  };
+
+  const goDemo = () => {
+    setOpen(false);
+    if (pathname !== "/intelligence") navigate("/intelligence", { state: { scrollTo: "demo" } });
+    else scrollToId("demo");
   };
 
   return (
@@ -23,31 +32,40 @@ export default function Nav() {
       <nav className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-5 md:px-10">
         <button
           data-testid="nav-logo-button"
-          onClick={() => go("hero")}
+          onClick={() => goPage("/")}
           className="cursor-pointer"
-          aria-label="Pragmr OnTime — back to top"
+          aria-label="Pragmr OnTime — home"
         >
           <Logo />
         </button>
 
         <div className="hidden items-center gap-9 md:flex">
-          {LINKS.map((l) => (
-            <button
-              key={l.id}
-              data-testid={`nav-link-${l.id}`}
-              onClick={() => go(l.id)}
-              className="group relative cursor-pointer font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500 transition-colors hover:text-ink"
-            >
-              {l.label}
-              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-brand transition-all duration-300 group-hover:w-full" />
-            </button>
-          ))}
+          {LINKS.map((l) => {
+            const active = pathname === l.to;
+            return (
+              <button
+                key={l.to}
+                data-testid={`nav-link-${l.label.toLowerCase()}`}
+                onClick={() => goPage(l.to)}
+                className={`group relative cursor-pointer font-mono text-[11px] uppercase tracking-[0.2em] transition-colors hover:text-ink ${
+                  active ? "text-ink" : "text-zinc-500"
+                }`}
+              >
+                {l.label}
+                <span
+                  className={`absolute -bottom-1.5 left-0 h-px bg-brand transition-all duration-300 group-hover:w-full ${
+                    active ? "w-full" : "w-0"
+                  }`}
+                />
+              </button>
+            );
+          })}
         </div>
 
         <div className="flex items-center gap-3">
           <button
             data-testid="nav-book-demo-button"
-            onClick={() => go("demo")}
+            onClick={goDemo}
             className="hidden cursor-pointer bg-brand px-6 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-brand-dark sm:block"
           >
             Book a Demo
@@ -74,9 +92,9 @@ export default function Nav() {
           >
             {LINKS.map((l) => (
               <button
-                key={l.id}
-                data-testid={`nav-mobile-link-${l.id}`}
-                onClick={() => go(l.id)}
+                key={l.to}
+                data-testid={`nav-mobile-link-${l.label.toLowerCase()}`}
+                onClick={() => goPage(l.to)}
                 className="block w-full cursor-pointer border-b border-line py-3.5 text-left font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-600 hover:text-ink"
               >
                 {l.label}
@@ -84,7 +102,7 @@ export default function Nav() {
             ))}
             <button
               data-testid="nav-mobile-book-demo-button"
-              onClick={() => go("demo")}
+              onClick={goDemo}
               className="mt-4 w-full cursor-pointer bg-brand px-6 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-white"
             >
               Book a Demo
