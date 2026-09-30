@@ -34,11 +34,11 @@ function DashboardCard() {
       <motion.div
         data-testid="hero-dashboard"
         style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
-        className="hero-tilt relative border border-line bg-white shadow-[0_40px_80px_-40px_rgba(17,17,17,0.25)]"
+        className="hero-tilt relative border border-line bg-paper shadow-[0_40px_80px_-40px_rgba(17,17,17,0.3)]"
       >
         <div className="flex items-center justify-between border-b border-line px-5 py-3">
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
-            Pragmr <span className="text-zinc-300">/</span> Delivery Confidence
+            OnTime <span className="text-zinc-300">/</span> Delivery Confidence
           </p>
           <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-600">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
@@ -84,7 +84,7 @@ function DashboardCard() {
                 </p>
               </div>
             </div>
-            <div className="mt-3 border border-line px-3 py-2 text-center">
+            <div className="mt-3 border border-line bg-white px-3 py-2 text-center">
               <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-400">
                 Expected ETA
               </p>
@@ -101,7 +101,7 @@ function DashboardCard() {
                   <span className="text-zinc-500">{s.label}</span>
                   <span className="text-ink">{s.v}%</span>
                 </div>
-                <div className="h-[3px] w-full bg-zinc-100">
+                <div className="h-[3px] w-full bg-white">
                   <motion.div
                     className="h-full"
                     style={{ backgroundColor: s.c }}
@@ -159,7 +159,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={ref}
-      className="spotlight relative overflow-hidden pt-16"
+      className="spotlight relative overflow-hidden bg-white pt-16"
       onMouseMove={(e) => {
         const r = e.currentTarget.getBoundingClientRect();
         e.currentTarget.style.setProperty("--sx", `${e.clientX - r.left}px`);
@@ -170,14 +170,14 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(640px circle at var(--sx, 70%) var(--sy, 30%), rgba(81,78,179,0.07), transparent 70%)",
+            "radial-gradient(640px circle at var(--sx, 70%) var(--sy, 30%), rgba(81,78,179,0.06), transparent 70%)",
         }}
       />
       <div className="relative grid grid-cols-1 lg:grid-cols-12">
         <div className="flex flex-col justify-center border-b border-line px-5 py-16 md:px-10 md:py-24 lg:col-span-7 lg:border-b-0 lg:border-r">
           <FadeUp y={14}>
             <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-brand">
-              Pragmr OnTime
+              Project delivery prediction platform
             </p>
           </FadeUp>
 

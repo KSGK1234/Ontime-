@@ -57,7 +57,7 @@ const FEATURES = [
 
 export default function Features() {
   return (
-    <section id="features" className="border-t border-line px-5 py-16 md:px-10 md:py-20">
+    <section id="features" className="border-t border-line bg-white px-5 py-16 md:px-10 md:py-20">
       <FadeUp>
         <Eyebrow num="01">Core features</Eyebrow>
         <h2 className="mt-6 max-w-3xl font-display text-4xl font-medium tracking-tighter leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
