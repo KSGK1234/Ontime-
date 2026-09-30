@@ -7,26 +7,31 @@ const OUTCOMES = [
     title: "Better resource decisions",
     desc: "Understand skills, availability and workload before assigning work.",
     outcome: "Right work to the right person",
+    items: ["Skills match before assignment", "Availability & workload snapshot", "Overload warning before hand-off"],
   },
   {
     title: "Earlier risk visibility",
     desc: "Identify aging work, blockers, rework and changing execution patterns.",
     outcome: "Spot delivery risks earlier",
+    items: ["Aging work flagged automatically", "Blocker alerts with downstream impact", "Rework trend signals"],
   },
   {
     title: "Better project control",
     desc: "Connect tasks, dependencies and milestones instead of managing them separately.",
     outcome: "More predictable project execution",
+    items: ["Tasks linked to dependencies", "Milestones tied to execution", "One view instead of status pings"],
   },
   {
     title: "Data-driven decisions",
     desc: "Use actual execution signals rather than relying only on memory, assumptions or manual status updates.",
     outcome: "Better delivery decisions",
+    items: ["Execution signals replace guesswork", "Historical pace vs current plan", "Live capacity over manual updates"],
   },
   {
     title: "Continuous improvement",
     desc: "Understand cycle time, WIP, bottlenecks, rework and other execution patterns.",
     outcome: "Improve the way projects are delivered",
+    items: ["Cycle time patterns", "WIP and bottleneck trends", "Rework hotspots over time"],
   },
 ];
 
@@ -53,17 +58,28 @@ export default function Outcomes() {
               i === OUTCOMES.length - 1 ? "md:col-span-2" : ""
             }`}
           >
-            <div className="flex h-full min-h-[220px] flex-col justify-between p-8 md:p-10">
+            <div className="flex h-full flex-col p-8 md:p-10">
               <span className="font-mono text-xs tracking-[0.2em] text-zinc-300 transition-colors duration-300 group-hover:text-white/70">
                 O.0{i + 1}
               </span>
-              <div className="mt-10">
+              <div className="mt-8">
                 <h3 className="font-display text-2xl font-medium tracking-tight text-ink transition-colors duration-300 group-hover:text-white md:text-3xl">
                   {o.title}
                 </h3>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-500 transition-colors duration-300 group-hover:text-zinc-200 md:text-base">
                   {o.desc}
                 </p>
+                <ul className="mt-5">
+                  {o.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-3 border-t border-line py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-500 transition-colors duration-300 group-hover:border-white/25 group-hover:text-zinc-200"
+                    >
+                      <span className="h-1.5 w-1.5 shrink-0 rotate-45 bg-brand transition-colors duration-300 group-hover:bg-white" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
                 <span className="mt-6 inline-flex items-center gap-3 border border-line px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500 transition-colors duration-300 group-hover:border-white/40 group-hover:text-white">
                   <ArrowRight
                     size={13}
