@@ -57,16 +57,15 @@ const OUTCOMES = [
 
 export default function Outcomes() {
   return (
-    <section id="outcomes" className="relative border-t border-white/[0.07] px-5 py-16 md:px-10 md:py-20">
-      <div className="absolute right-[-160px] top-1/3 h-[420px] w-[420px] rounded-full bg-brand/15 blur-[130px]" />
+    <section id="outcomes" className="border-t border-line px-5 py-16 md:px-10 md:py-20">
       <FadeUp>
         <Eyebrow num="03">Business Outcomes</Eyebrow>
-        <h2 className="mt-6 max-w-3xl font-display text-4xl font-semibold tracking-tight leading-[1.05] text-white sm:text-5xl lg:text-6xl">
+        <h2 className="mt-6 max-w-3xl font-display text-4xl font-medium tracking-tighter leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
           From features to business outcomes
         </h2>
       </FadeUp>
 
-      <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mt-12 grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-2">
         {OUTCOMES.map((o, i) => (
           <motion.div
             key={o.title}
@@ -75,37 +74,36 @@ export default function Outcomes() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: EASE, delay: (i % 2) * 0.08 }}
-            whileHover={{ y: -4 }}
-            className={`group h-full rounded-3xl border border-white/10 bg-panel/60 p-8 transition-colors duration-300 hover:border-brand-hi/50 hover:bg-panel md:p-10 ${
+            className={`group h-full bg-white transition-colors duration-300 hover:bg-brand ${
               i === OUTCOMES.length - 1 ? "md:col-span-2" : ""
             }`}
           >
-            <div className="flex h-full flex-col">
-              <span className="font-mono text-xs tracking-[0.2em] text-slate-600">
+            <div className="flex h-full flex-col p-8 md:p-10">
+              <span className="font-mono text-xs tracking-[0.2em] text-zinc-300 transition-colors duration-300 group-hover:text-white/70">
                 O.0{i + 1}
               </span>
               <div className="mt-8">
-                <h3 className="font-display text-2xl font-semibold tracking-tight text-white md:text-3xl">
+                <h3 className="font-display text-2xl font-medium tracking-tight text-ink transition-colors duration-300 group-hover:text-white md:text-3xl">
                   {o.title}
                 </h3>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-400 md:text-base">
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-500 transition-colors duration-300 group-hover:text-zinc-200 md:text-base">
                   {o.desc}
                 </p>
                 <ul className="mt-5">
                   {o.items.map((item) => (
                     <li
                       key={item}
-                      className="flex items-center gap-3 border-t border-white/[0.08] py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500 transition-colors duration-300 group-hover:text-slate-400"
+                      className="flex items-center gap-3 border-t border-line py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-500 transition-colors duration-300 group-hover:border-white/25 group-hover:text-zinc-200"
                     >
-                      <span className="h-1.5 w-1.5 shrink-0 rotate-45 bg-brand-hi" />
+                      <span className="h-1.5 w-1.5 shrink-0 rotate-45 bg-brand transition-colors duration-300 group-hover:bg-white" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <span className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.04] px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-slate-300 transition-colors duration-300 group-hover:border-brand-hi/50 group-hover:text-indigo-200">
+                <span className="mt-6 inline-flex items-center gap-3 border border-line px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500 transition-colors duration-300 group-hover:border-white/40 group-hover:text-white">
                   <ArrowRight
                     size={13}
-                    className="text-indigo-300 transition-transform duration-300 group-hover:translate-x-1"
+                    className="text-brand transition-all duration-300 group-hover:translate-x-1 group-hover:text-white"
                   />
                   {o.outcome}
                 </span>

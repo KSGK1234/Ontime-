@@ -61,7 +61,7 @@ export default function DemoModal() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-ink/60 p-4 backdrop-blur-sm"
           onClick={() => setOpen(false)}
         >
           <motion.div
@@ -69,60 +69,59 @@ export default function DemoModal() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.98 }}
             transition={{ duration: 0.35, ease: EASE }}
-            className="relative w-full max-w-md rounded-3xl border border-white/10 bg-panel shadow-[0_40px_90px_rgba(0,0,0,0.7)]"
+            className="relative w-full max-w-md border border-line bg-paper shadow-[0_40px_80px_rgba(0,0,0,0.35)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="absolute -top-20 left-1/2 h-40 w-72 -translate-x-1/2 rounded-full bg-brand/40 blur-3xl" />
             <button
               data-testid="demo-modal-close"
               onClick={() => setOpen(false)}
               aria-label="Close"
-              className="absolute right-3 top-3 z-10 cursor-pointer rounded-lg p-2 text-slate-400 transition-colors hover:bg-white/5 hover:text-white"
+              className="absolute right-3 top-3 cursor-pointer border border-transparent p-2 text-zinc-400 transition-colors hover:border-line hover:text-ink"
             >
               <X size={16} />
             </button>
 
-            <div className="relative border-b border-white/[0.08] px-7 py-4">
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-slate-400">
-                Pragmr <span className="text-slate-600">/</span>{" "}
-                <span className="text-indigo-300">Book a Demo</span>
+            <div className="border-b border-line px-7 py-4">
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400">
+                Pragmr <span className="text-zinc-300">/</span>{" "}
+                <span className="text-brand">Book a Demo</span>
               </p>
             </div>
 
             {status === "success" ? (
-              <div className="relative px-7 py-10 text-center" data-testid="demo-success">
-                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white shadow-[0_0_28px_rgba(99,96,212,0.6)]">
+              <div className="px-7 py-10 text-center" data-testid="demo-success">
+                <span className="mx-auto flex h-12 w-12 items-center justify-center bg-brand text-white">
                   <Check size={22} />
                 </span>
-                <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-white">
+                <h3 className="mt-6 font-display text-2xl font-medium tracking-tight text-ink">
                   Request received
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                <p className="mt-3 text-sm leading-relaxed text-zinc-500">
                   We&rsquo;ll reach out to{" "}
-                  <span className="font-medium text-white">{email.trim()}</span> to schedule your
+                  <span className="font-medium text-ink">{email.trim()}</span> to schedule your
                   OnTime demo.
                 </p>
                 <button
                   data-testid="demo-success-close-button"
                   onClick={() => setOpen(false)}
-                  className="mt-8 w-full cursor-pointer rounded-full bg-brand px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-brand-hi"
+                  className="mt-8 w-full cursor-pointer bg-brand px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-brand-dark"
                 >
                   Done
                 </button>
               </div>
             ) : (
-              <form onSubmit={submit} className="relative px-7 py-8" data-testid="demo-form">
-                <h3 className="font-display text-3xl font-semibold tracking-tight leading-tight text-white">
+              <form onSubmit={submit} className="px-7 py-8" data-testid="demo-form">
+                <h3 className="font-display text-3xl font-medium tracking-tighter leading-tight text-ink">
                   See OnTime with your own delivery data
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                <p className="mt-3 text-sm leading-relaxed text-zinc-500">
                   Leave your work email and we&rsquo;ll schedule a walkthrough of delivery
                   prediction, capacity intelligence and dependency tracking.
                 </p>
 
                 <label
                   htmlFor="demo-email"
-                  className="mt-7 block font-mono text-[10px] uppercase tracking-[0.22em] text-slate-400"
+                  className="mt-7 block font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-400"
                 >
                   Work email
                 </label>
@@ -137,10 +136,10 @@ export default function DemoModal() {
                     if (status === "error") setStatus("idle");
                   }}
                   placeholder="you@company.com"
-                  className="mt-2 w-full rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3.5 text-sm text-white outline-none transition-colors placeholder:text-slate-600 focus:border-brand-hi"
+                  className="mt-2 w-full border border-line bg-white px-4 py-3.5 text-sm text-ink outline-none transition-colors placeholder:text-zinc-300 focus:border-brand"
                 />
                 {status === "error" && (
-                  <p data-testid="demo-error" className="mt-2 font-mono text-[11px] text-red-400">
+                  <p data-testid="demo-error" className="mt-2 font-mono text-[11px] text-red-500">
                     {error}
                   </p>
                 )}
@@ -149,7 +148,7 @@ export default function DemoModal() {
                   data-testid="demo-submit-button"
                   type="submit"
                   disabled={status === "loading"}
-                  className="group mt-6 flex w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-brand px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white shadow-[0_0_28px_rgba(81,78,179,0.5)] transition-all duration-300 hover:bg-brand-hi disabled:cursor-wait disabled:opacity-70"
+                  className="group mt-6 flex w-full cursor-pointer items-center justify-center gap-3 bg-brand px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-brand-dark disabled:cursor-wait disabled:opacity-70"
                 >
                   {status === "loading" ? "Sending…" : "Request Demo"}
                   <ArrowRight
@@ -157,7 +156,7 @@ export default function DemoModal() {
                     className="transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </button>
-                <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
+                <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-400">
                   No commitment — quick walkthrough
                 </p>
               </form>

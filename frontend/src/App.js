@@ -42,9 +42,9 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollManager />
-      <div className="grain min-h-screen bg-void text-slate-100">
+      <div className="grain min-h-screen bg-paper text-ink">
         <Nav />
-        <div className="relative mx-auto max-w-[1440px] border-x border-white/[0.06]">
+        <div className="relative mx-auto max-w-[1440px] border-x border-line">
           <main>
             <Routes>
               <Route path="/" element={<Home />} />

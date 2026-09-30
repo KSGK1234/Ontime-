@@ -1,5 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import Logo from "./Logo";
+import { scrollToId } from "../lib/scroll";
+
+const LINKS = [
+  { label: "Product", id: "manage" },
+  { label: "Features", id: "features" },
+];
 
 const PAGE_LINKS = [
   { label: "Product", to: "/" },
@@ -7,34 +12,26 @@ const PAGE_LINKS = [
 ];
 
 export default function Footer() {
-  const navigate = useNavigate();
-
   return (
     <footer className="border-t border-white/[0.07]">
       <div className="px-5 py-12 md:px-10 md:py-14">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
-            <button
-              data-testid="footer-logo-button"
-              onClick={() => navigate("/")}
-              className="cursor-pointer"
-            >
-              <Logo className="h-8" />
-            </button>
+            <Logo className="h-8" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-400">
               Predict project delivery before delays become problems.
             </p>
           </div>
           <div className="flex flex-wrap gap-x-10 gap-y-3">
             {PAGE_LINKS.map((l) => (
-              <button
+              <span
                 key={l.to}
                 data-testid={`footer-link-${l.label.toLowerCase()}`}
-                onClick={() => navigate(l.to)}
+                onClick={() => scrollToId(l.id ?? l.to)}
                 className="cursor-pointer font-mono text-[11px] uppercase tracking-[0.2em] text-slate-400 transition-colors hover:text-white"
               >
                 {l.label}
-              </button>
+              </span>
             ))}
             <a
               data-testid="footer-link-pragmr-site"

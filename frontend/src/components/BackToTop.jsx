@@ -21,7 +21,7 @@ export default function BackToTop() {
       data-testid="back-to-top"
       aria-label="Back to top"
       onClick={toTop}
-      className={`glass fixed bottom-5 right-5 z-[70] flex h-11 w-11 items-center justify-center rounded-full text-slate-200 transition-all duration-300 hover:border-brand-hi/50 hover:text-indigo-300 md:bottom-8 md:right-8 ${
+      className={`fixed bottom-5 right-5 z-[70] flex h-11 w-11 items-center justify-center border border-line bg-white text-ink shadow-lg transition-all duration-300 hover:border-brand hover:bg-brand hover:text-white md:bottom-8 md:right-8 ${
         show ? "pointer-events-auto opacity-100" : "pointer-events-none translate-y-2 opacity-0"
       }`}
     >
