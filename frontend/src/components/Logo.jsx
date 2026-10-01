@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { AUTH_TRANSFORM, AUTH_PATHS } from "./pragmr-mark";
 import {
-  TREND_D,
-  TREND_DOT,
+  BAR_X,
+  BAR_Y0,
+  BAR_Y1,
   O_ARC_D,
   O_TICK_D,
   NTIME_D,
@@ -12,12 +13,12 @@ import {
 const EASE = [0.16, 1, 0.3, 1];
 
 const PALETTE = {
-  light: { ontime: "#514EB3", bar: "#D4D3E2" },
+  light: { ontime: "#514EB3", bar: "#131316" },
   dark: { ontime: "#A8A6E8", bar: "rgba(244,244,242,0.28)" },
 };
 
-// Lockup: authentic pragmr.com wordmark (P-arrow icon, used as-is) + growth
-// separator (rising trend + node) + OnTime whose O is the brand ring-tick mark.
+// Lockup: authentic pragmr.com wordmark (P-arrow icon, used as-is) + simple
+// dark divider line + OnTime whose O is the brand ring-tick mark.
 const VB_W = (Math.ceil(TOTAL_RIGHT * 100) / 100).toFixed(2);
 
 const AUTH_FILL = "#514EB3"; // authentic trademark indigo, both variants
@@ -38,18 +39,8 @@ export default function Logo({
     </g>
   );
 
-// Growth separator: rising trend line + arrival node (denotes growth)
-  const trend = (
-    <>
-      <path
-        d={TREND_D}
-        stroke={c.bar}
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx={TREND_DOT[0]} cy={TREND_DOT[1]} r={TREND_DOT[2]} fill={c.ontime} />
-    </>
+  const bar = (
+    <rect x={BAR_X} y={BAR_Y0} width="2" height={BAR_Y1 - BAR_Y0} fill={c.bar} />
   );
 
   return (
@@ -70,25 +61,13 @@ export default function Logo({
             >
               {auth}
             </motion.g>
-            <motion.path
-              d={TREND_D}
-              stroke={c.bar}
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 0.6, ease: EASE, delay: 1.05 }}
-            />
-            <motion.circle
-              cx={TREND_DOT[0]}
-              cy={TREND_DOT[1]}
-              r={TREND_DOT[2]}
-              fill={c.ontime}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.4, ease: EASE, delay: 1.7 }}
-            />
+            <motion.g
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: EASE, delay: 1.05 }}
+            >
+              {bar}
+            </motion.g>
             <motion.path
               d={O_ARC_D}
               stroke={c.ontime}
@@ -96,14 +75,14 @@ export default function Logo({
               strokeLinecap="round"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 0.7, ease: EASE, delay: 1.3 }}
+              transition={{ duration: 0.7, ease: EASE, delay: 1.25 }}
             />
             <motion.path
               d={NTIME_D}
               fill={c.ontime}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, ease: EASE, delay: 1.5 }}
+              transition={{ duration: 0.5, ease: EASE, delay: 1.45 }}
             />
             <motion.path
               d={O_TICK_D}
@@ -113,13 +92,13 @@ export default function Logo({
               strokeLinejoin="round"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 0.35, ease: EASE, delay: 1.9 }}
+              transition={{ duration: 0.35, ease: EASE, delay: 1.85 }}
             />
           </>
         ) : (
           <>
             {auth}
-            {trend}
+            {bar}
             <path d={O_ARC_D} stroke={c.ontime} strokeWidth="3.8" strokeLinecap="round" />
             <path
               d={O_TICK_D}
