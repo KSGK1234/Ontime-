@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
         <div className="mt-12 flex flex-col gap-3 border-t border-white/[0.06] pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-slate-500">
-            © {new Date().getFullYear()} Pragmr — OnTime
+            © {new Date().getFullYear()} Pragmr™ — OnTime is a product of Pragmr
           </p>
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-slate-600">
             Delivery Intelligence
