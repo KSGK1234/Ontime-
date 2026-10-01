@@ -1,0 +1,33 @@
+{
+  "summary": "Iteration 3 logo lockup verification. Tested nav/hero/footer logo rendering across / and /intelligence, demo flow, mobile 390px, static asset HTTP 200s, and console errors. All critical acceptance criteria met: authentic Pragmr vectors + bar + ticked-O + nTime render correctly on both pages, footer dark variant is legible on bg-ink (regression from iter-1 remains fixed), demo POST /api/demo-requests returns 200 and success state renders, no console errors, no mobile overflow.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/test_reports/iteration_3.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Logo.jsx is clean and small (~116 lines); animated branch and static branch kept symmetric. No concerns.",
+    "pragmr-mark.js and wordmark.js are generated and marked do-not-edit; good separation of geometry from component.",
+    "All interactive elements have proper data-testid (nav-logo-button, hero-logo, logo-lockup, nav-book-demo-button). Good test coverage affordance."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "100%", "frontend": "100%" },
+  "seed_data_creation": "Submitted qa.logo3@test.com via POST /api/demo-requests (id 0eb31e75-...) during demo flow test.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Logo lockup iteration 3 (authentic pragmr.com SVG + ticked-OnTime) verified end-to-end. Nav lockup ~130px wide on mobile (fits 390 viewport comfortably), ~260px on desktop. Hero animated lockup settles within ~2s (8 paths + 1 rect in SVG, viewBox 0 0 222.84 48). Footer dark variant renders 148x32px with 8 paths visible on ink background. Demo endpoint is POST /api/demo-requests (not /api/demo).",
+  "verification_details": {
+    "assets_http": { "favicon.png": 200, "favicon.svg": 200, "apple-touch-icon.png": 200, "og-image.png": 200 },
+    "demo_api": { "endpoint": "/api/demo-requests", "status": 200, "response_has_ok_true": true },
+    "home_lockups_rendered": 2,
+    "intelligence_lockups_rendered": 2,
+    "footer_logo_visible": true,
+    "footer_logo_paths": 8,
+    "hero_svg_viewbox": "0 0 222.84 48",
+    "mobile_overflow": false,
+    "console_errors": 0
+  }
+}
