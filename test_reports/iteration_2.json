@@ -1,0 +1,18 @@
+{
+  "summary": "Iteration 2 regression + full-flow verification of Pragmr OnTime marketing site (/, /intelligence). All iteration-1 fix verified: footer now has bg-ink (computed rgb(19,19,22)) and dark-variant logo renders visibly on both pages. Nav lockup present and crisp on Home + Intelligence at desktop and mobile (~28px tall, 154px wide; vector SVG; navigates to /). Hero animated lockup settles fully within ~3s with ring/tick/arrival-dot/wordmark/ticked-O all drawn. Intelligence page renders without breakage. Demo flow: modal opens via nav-book-demo-button, POST /api/demo-requests returns 200 with id (verified via curl: id ea598ad5-..., email qa.logo2@test.com) and UI shows success state. Mobile 390px: no horizontal overflow, logo fits, hamburger opens, mobile book-demo button present and functional. Zero React console errors on either page (Logo.jsx/wordmark.js imports PRAGMR_D, BAR_X, BAR_Y0, BAR_Y1, O_ARC_D, O_TICK_D, NTIME_D, TOTAL_RIGHT all resolve). Assets: /favicon.png, /favicon.svg, /apple-touch-icon.png, /og-image.png all return HTTP 200.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": ["/app/test_reports/iteration_1.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Footer.jsx now correctly pairs variant='dark' Logo with bg-ink surface — iteration-1 HIGH bug fully resolved.",
+    "Logo.jsx cleanly separates animated vs static branches and dark/light palettes; no issues observed."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "N/A — no auth",
+  "seed_data_creation": "Submitted one demo request via API (email qa.logo2@test.com, id ea598ad5-928f-42b9-8fbd-caffa0168b9b) and one via UI modal (qa.logo2b@test.com).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration-2 shipped clean. Footer regression (invisible dark logo on paper bg) is fixed via bg-ink on <footer>. Demo endpoint is POST /api/demo-requests. data-testids in use: nav-logo-button, nav-book-demo-button, nav-mobile-book-demo-button, nav-mobile-toggle, hero-logo, logo-lockup, footer-link-product, footer-link-intelligence, footer-link-pragmr-site."
+}
