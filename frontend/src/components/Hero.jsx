@@ -227,94 +227,82 @@ const OUTCOMES = [
   { n: "05", t: "Domain-Specific Customization", Icon: SlidersHorizontal, Viz: CustomViz },
 ];
 
+function SatelliteLink() {
+  return (
+    <svg className="hidden h-6 w-16 shrink-0 lg:block xl:w-24" aria-hidden="true">
+      <line x1="0" y1="12" x2="96" y2="12" stroke="#C7C6E8" strokeWidth="1.5" className="dash-anim" />
+      <rect x="44" y="8" width="8" height="8" transform="rotate(45 48 12)" fill="#514EB3" />
+    </svg>
+  );
+}
+
 function OutcomesCard() {
   return (
-    <div className="relative" data-testid="hero-dashboard">
-      <div className="relative border border-line bg-white shadow-[0_40px_80px_-40px_rgba(17,17,17,0.3)]">
-        <div className="flex items-center justify-between border-b border-line px-5 py-3">
-          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
-            Pragmr <span className="text-zinc-300">/</span> Product Outcomes
-          </p>
-          <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-600">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
-            Live
-          </span>
-        </div>
+    <div className="relative border border-line bg-white shadow-[0_40px_80px_-40px_rgba(17,17,17,0.3)]" data-testid="hero-dashboard">
+      <div className="flex items-center justify-between border-b border-line px-5 py-3">
+        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+          Pragmr <span className="text-zinc-300">/</span> Product Outcomes
+        </p>
+        <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-600">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+          Live
+        </span>
+      </div>
 
-        {/* 01 — featured: delivery prediction */}
-        <motion.div
-          data-testid="hero-outcome-01"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
-          className="group border-b border-line bg-white p-5 transition-colors duration-300 hover:bg-brand-pale/50"
-        >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <span className="font-mono text-[9px] tracking-[0.2em] text-zinc-400">01</span>
-              <h3 className="font-display text-sm font-semibold leading-tight tracking-tight text-ink">
-                Delivery Prediction
-              </h3>
-            </div>
-            <span className="flex h-8 w-8 items-center justify-center border border-line text-zinc-400 transition-colors duration-300 group-hover:border-brand group-hover:text-brand">
-              <TrendingUp size={14} strokeWidth={1.5} />
-            </span>
+      {/* 01 — featured: delivery prediction */}
+      <motion.div
+        data-testid="hero-outcome-01"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
+        className="group border-b border-line bg-white p-5 transition-colors duration-300 hover:bg-brand-pale/50"
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <span className="font-mono text-[9px] tracking-[0.2em] text-zinc-400">01</span>
+            <h3 className="font-display text-sm font-semibold leading-tight tracking-tight text-ink">
+              Delivery Prediction
+            </h3>
           </div>
-          <PredictViz />
-        </motion.div>
-
-        <div className="grid grid-cols-2 gap-px bg-line">
-          {OUTCOMES.map(({ n, t, Icon, Viz }, i) => (
-            <motion.div
-              key={t}
-              data-testid={`hero-outcome-${n}`}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, ease: EASE, delay: 0.35 + i * 0.12 }}
-              className="group bg-white p-4 transition-colors duration-300 hover:bg-brand-pale/60"
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[9px] tracking-[0.2em] text-zinc-400">{n}</span>
-                <span className="flex h-8 w-8 items-center justify-center border border-line text-zinc-400 transition-colors duration-300 group-hover:border-brand group-hover:text-brand">
-                  <Icon size={14} strokeWidth={1.5} />
-                </span>
-              </div>
-              <h3 className="mt-2.5 font-display text-sm font-semibold leading-tight tracking-tight text-ink">
-                {t}
-              </h3>
-              <Viz />
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="flex items-center justify-between border-t border-line px-5 py-3 font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-400">
-          <span>
-            Outcomes <span className="text-brand">01–05</span>
+          <span className="flex h-8 w-8 items-center justify-center border border-line text-zinc-400 transition-colors duration-300 group-hover:border-brand group-hover:text-brand">
+            <TrendingUp size={14} strokeWidth={1.5} />
           </span>
-          <span>One Platform</span>
-          <span className="text-emerald-600">Deliverable</span>
         </div>
+        <PredictViz />
+      </motion.div>
+
+      <div className="grid grid-cols-2 gap-px bg-line">
+        {OUTCOMES.map(({ n, t, Icon, Viz }, i) => (
+          <motion.div
+            key={t}
+            data-testid={`hero-outcome-${n}`}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.35 + i * 0.12 }}
+            className="group bg-white p-4 transition-colors duration-300 hover:bg-brand-pale/60"
+          >
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[9px] tracking-[0.2em] text-zinc-400">{n}</span>
+              <span className="flex h-8 w-8 items-center justify-center border border-line text-zinc-400 transition-colors duration-300 group-hover:border-brand group-hover:text-brand">
+                <Icon size={14} strokeWidth={1.5} />
+              </span>
+            </div>
+            <h3 className="mt-2.5 font-display text-sm font-semibold leading-tight tracking-tight text-ink">
+              {t}
+            </h3>
+            <Viz />
+          </motion.div>
+        ))}
       </div>
 
-      <div
-        data-testid="hero-chip-risk"
-        className="absolute -top-6 left-8 z-10 hidden items-center gap-2 border border-line bg-white px-3.5 py-2 shadow-lg md:flex"
-      >
-        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400" />
-        <p className="whitespace-nowrap font-mono text-[10px] font-medium text-ink">
-          Rework rising <span className="text-amber-500">+18%</span>
-        </p>
-      </div>
-      <div
-        data-testid="hero-chip-verdict"
-        className="absolute -bottom-12 right-10 z-10 hidden bg-brand px-4 py-3 shadow-lg md:block"
-      >
-        <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-300">Verdict</p>
-        <p className="font-mono text-xs font-medium text-white">
-          Deliverable <span className="text-emerald-400">— with adjustment</span>
-        </p>
+      <div className="flex items-center justify-between border-t border-line px-5 py-3 font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-400">
+        <span>
+          Outcomes <span className="text-brand">01–05</span>
+        </span>
+        <span>One Platform</span>
+        <span className="text-emerald-600">Deliverable</span>
       </div>
     </div>
   );
@@ -336,7 +324,7 @@ export default function Hero() {
       />
       <div className="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-brand/10 blur-[130px]" />
 
-      <div className="relative mx-auto max-w-3xl px-6 text-center">
+      <div className="relative mx-auto max-w-6xl px-6 text-center">
         <FadeUp y={16}>
           <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-brand">
             For service teams
@@ -356,18 +344,17 @@ export default function Hero() {
         <MaskedLines
           mode="load"
           delay={0.35}
-          className="mt-9 flex flex-col gap-2 text-center font-display text-4xl tracking-tighter leading-[1.12] text-ink sm:text-5xl lg:text-6xl"
+          className="mt-10 block font-display text-2xl font-medium tracking-tight leading-[1.35] text-ink md:whitespace-nowrap md:text-[clamp(1.5rem,3.1vw,2.9rem)] md:leading-[1.3]"
           lines={[
-            <span className="font-light">Predict project</span>,
-            <span className="font-bold">
-              delivery before <span className="text-brand">delays</span>
+            <span>
+              <span className="font-semibold">Predict project delivery</span> before{" "}
+              <span className="font-semibold text-brand">delays</span> become problems.
             </span>,
-            <span className="font-light">become problems.</span>,
           ]}
         />
 
         <FadeUp delay={0.85}>
-          <div className="mt-10 flex justify-center">
+          <div className="mt-9 flex justify-center">
             <button
               data-testid="hero-see-how-button"
               onClick={() => scrollToId("features")}
@@ -383,7 +370,7 @@ export default function Hero() {
         </FadeUp>
 
         <FadeUp delay={1}>
-          <p className="mt-9 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400">
+          <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400">
             Capacity <span className="mx-2 text-zinc-300">/</span> Dependencies{" "}
             <span className="mx-2 text-zinc-300">/</span> Milestones{" "}
             <span className="mx-2 text-zinc-300">/</span> Prediction
@@ -391,10 +378,39 @@ export default function Hero() {
         </FadeUp>
       </div>
 
-      <div className="relative mx-auto mt-16 max-w-xl px-6 pb-24 md:mt-20">
-        <motion.div style={{ y: cardY }}>
-          <FadeUp delay={0.5} y={40}>
+      {/* exploded product view: card flanked by connected signal satellites */}
+      <div className="relative mx-auto mt-20 max-w-6xl px-6 pb-28">
+        <motion.div style={{ y: cardY }} className="flex items-center justify-center">
+          <FadeUp delay={0.7} className="hidden w-44 shrink-0 lg:block xl:w-52">
+            <div className="border border-line bg-white p-4 shadow-[0_20px_50px_-30px_rgba(17,17,17,0.3)]" data-testid="hero-chip-risk">
+              <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-zinc-400">
+                Signal
+              </p>
+              <p className="mt-1.5 font-mono text-xs font-medium text-ink">
+                Rework rising <span className="text-amber-500">+18%</span>
+              </p>
+              <div className="mt-3 h-px w-full bg-gradient-to-r from-amber-400/60 to-transparent" />
+            </div>
+          </FadeUp>
+
+          <SatelliteLink />
+
+          <FadeUp delay={0.5} y={40} className="w-full max-w-md shrink-0 xl:max-w-lg">
             <OutcomesCard />
+          </FadeUp>
+
+          <SatelliteLink />
+
+          <FadeUp delay={0.9} className="hidden w-44 shrink-0 lg:block xl:w-52">
+            <div className="bg-brand p-4 shadow-[0_20px_50px_-20px_rgba(81,78,179,0.55)]" data-testid="hero-chip-verdict">
+              <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-zinc-300">
+                Verdict
+              </p>
+              <p className="mt-1.5 font-mono text-xs font-medium text-white">
+                Deliverable <span className="text-emerald-400">— with adjustment</span>
+              </p>
+              <div className="mt-3 h-px w-full bg-gradient-to-r from-emerald-400/60 to-transparent" />
+            </div>
           </FadeUp>
         </motion.div>
       </div>

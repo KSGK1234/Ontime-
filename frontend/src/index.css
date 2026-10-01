@@ -95,3 +95,13 @@
     transform-origin: center;
     animation: orbit-spin 70s linear infinite reverse;
 }
+
+@keyframes dash-move {
+    to {
+        stroke-dashoffset: -20;
+    }
+}
+.dash-anim {
+    stroke-dasharray: 5 5;
+    animation: dash-move 1.1s linear infinite;
+}
