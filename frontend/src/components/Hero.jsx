@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, TrendingUp, BarChart3, Users2, SlidersHorizontal } from "lucide-react";
 import { MaskedLines, FadeUp, EASE } from "./reveal";
+import Logo from "./Logo";
 import { scrollToId } from "../lib/scroll";
 
 function PredictViz() {
@@ -332,12 +333,10 @@ export default function Hero() {
         </FadeUp>
 
         <FadeUp delay={0.15}>
-          <img
-            src="/ontime-logo.png"
-            alt="Pragmr OnTime"
+          <Logo
+            animated
             data-testid="hero-logo"
             className="mx-auto mt-7 h-12 w-auto sm:h-14"
-            draggable="false"
           />
         </FadeUp>
 

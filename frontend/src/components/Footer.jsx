@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="px-5 py-12 md:px-10 md:py-14">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
-            <Logo className="h-8" />
+            <Logo className="h-8" variant="dark" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-400">
               Predict project delivery before delays become problems.
             </p>
