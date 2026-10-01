@@ -4,8 +4,9 @@ import {
   BAR_X,
   BAR_Y0,
   BAR_Y1,
-  ONTIME_X,
-  ONTIME_D,
+  O_ARC_D,
+  O_TICK_D,
+  NTIME_D,
   TOTAL_RIGHT,
 } from "./wordmark";
 
@@ -29,7 +30,8 @@ const PALETTE = {
 };
 
 // Unique OnTime mark: progress ring completing to 100% (round-capped arc)
-// with the arrival node in the gap and a check tick inside.
+// with the arrival node in the gap and a check tick inside. The same ring
+// (minus the node — no room at letter size) stands in for the O of OnTime.
 const ARC = "M40.45 14.5 A19 19 0 1 1 27.3 5.29";
 const TICK = "M15.5 24.5 21.5 30.5 32.5 17.5";
 const VB_W = (Math.ceil(TOTAL_RIGHT * 100) / 100).toFixed(2);
@@ -46,7 +48,6 @@ export default function Logo({
     <>
       <path d={PRAGMR_D} fill={c.pragmr} />
       <rect x={BAR_X} y={BAR_Y0} width="2" height={BAR_Y1 - BAR_Y0} fill={c.bar} />
-      <path d={ONTIME_D} fill={c.ontime} />
     </>
   );
 
@@ -95,6 +96,26 @@ export default function Logo({
               transition={{ duration: 0.6, ease: EASE, delay: 1.35 }}
             >
               {wordmark}
+              <motion.path
+                d={O_ARC_D}
+                stroke={c.ontime}
+                strokeWidth="3.8"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.7, ease: EASE, delay: 1.6 }}
+              />
+              <motion.path
+                d={O_TICK_D}
+                stroke={c.ontime}
+                strokeWidth="2.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.35, ease: EASE, delay: 2.15 }}
+              />
+              <path d={NTIME_D} fill={c.ontime} />
             </motion.g>
           </>
         ) : (
@@ -109,6 +130,15 @@ export default function Logo({
               strokeLinejoin="round"
             />
             {wordmark}
+            <path d={O_ARC_D} stroke={c.ontime} strokeWidth="3.8" strokeLinecap="round" />
+            <path
+              d={O_TICK_D}
+              stroke={c.ontime}
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path d={NTIME_D} fill={c.ontime} />
           </>
         )}
       </svg>

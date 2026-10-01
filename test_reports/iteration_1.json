@@ -1,0 +1,34 @@
+{
+  "summary": "Tested new Pragmr OnTime logo lockup across Home, Intelligence, nav, hero, footer, demo modal, mobile, favicon/og assets. Logo renders crisp vector SVG everywhere, no console errors on either page, hero animation completes, demo flow (POST /api/demo-requests) returns 200 and shows 'Request received' success state, mobile 390px renders without overflow, hamburger + mobile Book a Demo work, back-to-top present. One HIGH priority visual bug found: Footer dark-variant logo is invisible because the Footer sits on a light paper background, not a dark one — the Pragmr wordmark (paper #F4F4F2) and tick (paper) disappear against bg-paper, leaving only a faint ring + 'OnTime'.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/demo", "issue": "Review request mentions POST /api/demo but actual endpoint is POST /api/demo-requests (frontend DemoModal.jsx:42). /api/demo returns 404. Not a real bug — just note the endpoint name mismatch in the request description."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Footer", "issue": "Footer uses <Logo variant='dark'> but the Footer renders on bg-paper (#F4F4F2) because the <footer> itself has no background and sits inside App.js's bg-paper container. Result: the dark-variant Pragmr wordmark (fill #F4F4F2) and the tick (stroke #F4F4F2) are INVISIBLE against the paper background. Only the brand-light ring and the brand-light 'OnTime' word are faintly visible. The lockup looks broken/incomplete (ring with no tick + no 'Pragmr' word + 'OnTime'). Verified via computed style: footer bg = rgba(0,0,0,0), body bg = rgb(244,244,242).", "selector": "footer [data-testid='logo-lockup']", "priority": "HIGH"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Footer", "issues": ["Footer has no dark background — contrary to spec which says 'Footer (dark background) shows the dark-variant logo'. Either (a) add bg-ink/bg-black to <footer> so dark-variant logo + slate text contrast properly, or (b) switch Footer to <Logo variant='light'>. Current state ships an incomplete/invisible logo lockup in the footer."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix Footer: either apply a dark background (bg-ink) to the <footer> element so the existing variant='dark' logo + slate-400/500/600 text render correctly, or change <Logo variant='dark'> to <Logo variant='light'> in Footer.jsx line 20. Current rendering shows only a faint ring and the word 'OnTime' — Pragmr wordmark and tick are invisible on paper bg."
+  ],
+  "critical_code_review_comments": [
+    "Footer.jsx: dark variant logo is used but <footer> has no dark bg class — mismatch between logo palette and actual background causes invisible elements.",
+    "Review request references /api/demo but code uses /api/demo-requests — keep nomenclature consistent in future specs."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "90%"},
+  "test_credentials": "N/A — no auth",
+  "seed_data_creation": "Posted one demo request with email qa.logo@test.com to /api/demo-requests (returned 200, id persisted).",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Nav/hero/mobile/favicon/og/demo-modal flow all verified good at desktop 1440x900 and mobile 390x844. Only the Footer logo visibility needs retest after main agent fixes background OR switches variant. Demo endpoint is /api/demo-requests (not /api/demo).",
+  "rca of the issue": "Logo.jsx PALETTE.dark uses paper(#F4F4F2) and brand-light(#A8A6E8) which assume a dark surface. Footer.jsx renders inside App.js's grain bg-paper container and sets no background of its own, so the dark palette fills blend into the paper background. Reproduction: load / , scroll to footer — Pragmr wordmark and tick are missing/invisible. Mitigation: add `bg-ink` to <footer> in Footer.jsx line 16, OR change variant='dark' to variant='light' on line 20."
+}

@@ -13,7 +13,7 @@ const PAGE_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.07]">
+    <footer className="border-t border-white/[0.07] bg-ink">
       <div className="px-5 py-12 md:px-10 md:py-14">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
