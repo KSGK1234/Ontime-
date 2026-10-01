@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, TrendingUp, BarChart3, Users2, SlidersHorizontal } from "lucide-react";
 import { MaskedLines, FadeUp, EASE } from "./reveal";
 import { scrollToId } from "../lib/scroll";
@@ -228,29 +228,9 @@ const OUTCOMES = [
 ];
 
 function OutcomesCard() {
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const rx = useSpring(useTransform(my, [-0.5, 0.5], [5, -5]), { stiffness: 120, damping: 16 });
-  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-7, 7]), { stiffness: 120, damping: 16 });
-
   return (
-    <div
-      className="relative [perspective:1200px]"
-      onMouseMove={(e) => {
-        const r = e.currentTarget.getBoundingClientRect();
-        mx.set((e.clientX - r.left) / r.width - 0.5);
-        my.set((e.clientY - r.top) / r.height - 0.5);
-      }}
-      onMouseLeave={() => {
-        mx.set(0);
-        my.set(0);
-      }}
-    >
-      <motion.div
-        data-testid="hero-dashboard"
-        style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
-        className="relative border border-line bg-white shadow-[0_40px_80px_-40px_rgba(17,17,17,0.3)]"
-      >
+    <div className="relative" data-testid="hero-dashboard">
+      <div className="relative border border-line bg-white shadow-[0_40px_80px_-40px_rgba(17,17,17,0.3)]">
         <div className="flex items-center justify-between border-b border-line px-5 py-3">
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
             Pragmr <span className="text-zinc-300">/</span> Product Outcomes
@@ -265,8 +245,9 @@ function OutcomesCard() {
         <motion.div
           data-testid="hero-outcome-01"
           initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
           className="group border-b border-line bg-white p-5 transition-colors duration-300 hover:bg-brand-pale/50"
         >
           <div className="flex items-center justify-between">
@@ -289,8 +270,9 @@ function OutcomesCard() {
               key={t}
               data-testid={`hero-outcome-${n}`}
               initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE, delay: 0.75 + i * 0.12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, ease: EASE, delay: 0.35 + i * 0.12 }}
               className="group bg-white p-4 transition-colors duration-300 hover:bg-brand-pale/60"
             >
               <div className="flex items-center justify-between">
@@ -314,7 +296,7 @@ function OutcomesCard() {
           <span>One Platform</span>
           <span className="text-emerald-600">Deliverable</span>
         </div>
-      </motion.div>
+      </div>
 
       <div
         data-testid="hero-chip-risk"
@@ -341,88 +323,80 @@ function OutcomesCard() {
 export default function Hero() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const cardY = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const chipAY = useTransform(scrollYProgress, [0, 1], [0, 70]);
-  const chipBY = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const cardY = useTransform(scrollYProgress, [0, 1], [0, 60]);
 
   return (
-    <section
-      id="hero"
-      ref={ref}
-      className="spotlight relative overflow-hidden bg-white pt-16"
-      onMouseMove={(e) => {
-        const r = e.currentTarget.getBoundingClientRect();
-        e.currentTarget.style.setProperty("--sx", `${e.clientX - r.left}px`);
-        e.currentTarget.style.setProperty("--sy", `${e.clientY - r.top}px`);
-      }}
-    >
+    <section id="hero" ref={ref} className="relative overflow-hidden bg-white pt-24 md:pt-28">
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-x-0 top-0 h-full"
         style={{
           background:
-            "radial-gradient(640px circle at var(--sx, 70%) var(--sy, 30%), rgba(81,78,179,0.06), transparent 70%)",
+            "radial-gradient(720px circle at 50% 12%, rgba(81,78,179,0.08), transparent 70%)",
         }}
       />
-      <div className="relative grid grid-cols-1 lg:grid-cols-12">
-        <div className="flex flex-col justify-center border-b border-line px-5 py-16 md:px-10 md:py-24 lg:col-span-7 lg:border-b-0 lg:border-r">
-          <FadeUp y={14}>
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-brand">
-              For service teams
-            </p>
-          </FadeUp>
+      <div className="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-brand/10 blur-[130px]" />
 
-          <MaskedLines
-            mode="load"
-            delay={0.2}
-            className="mt-6 flex flex-col gap-2 font-display text-4xl tracking-tighter leading-[1.12] text-ink sm:text-5xl lg:text-6xl"
-            lines={[
-              <span className="font-light">Predict project</span>,
-              <span className="font-bold">
-                delivery before <span className="text-brand">delays</span>
-              </span>,
-              <span className="font-light">become problems.</span>,
-            ]}
+      <div className="relative mx-auto max-w-3xl px-6 text-center">
+        <FadeUp y={16}>
+          <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-brand">
+            For service teams
+          </p>
+        </FadeUp>
+
+        <FadeUp delay={0.15}>
+          <img
+            src="/ontime-logo.png"
+            alt="Pragmr OnTime"
+            data-testid="hero-logo"
+            className="mx-auto mt-7 h-12 w-auto sm:h-14"
+            draggable="false"
           />
+        </FadeUp>
 
-          <FadeUp delay={0.7}>
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-zinc-500 md:text-lg">
-              OnTime helps service teams understand delivery risk, allocate work effectively, and
-              make data-driven decisions throughout the project lifecycle.
-            </p>
+        <MaskedLines
+          mode="load"
+          delay={0.35}
+          className="mt-9 flex flex-col gap-2 text-center font-display text-4xl tracking-tighter leading-[1.12] text-ink sm:text-5xl lg:text-6xl"
+          lines={[
+            <span className="font-light">Predict project</span>,
+            <span className="font-bold">
+              delivery before <span className="text-brand">delays</span>
+            </span>,
+            <span className="font-light">become problems.</span>,
+          ]}
+        />
+
+        <FadeUp delay={0.85}>
+          <div className="mt-10 flex justify-center">
+            <button
+              data-testid="hero-see-how-button"
+              onClick={() => scrollToId("features")}
+              className="group flex cursor-pointer items-center gap-3 bg-brand px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-brand-dark"
+            >
+              See How OnTime Works
+              <ArrowDown
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-y-1"
+              />
+            </button>
+          </div>
+        </FadeUp>
+
+        <FadeUp delay={1}>
+          <p className="mt-9 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400">
+            Capacity <span className="mx-2 text-zinc-300">/</span> Dependencies{" "}
+            <span className="mx-2 text-zinc-300">/</span> Milestones{" "}
+            <span className="mx-2 text-zinc-300">/</span> Prediction
+          </p>
+        </FadeUp>
+      </div>
+
+      <div className="relative mx-auto mt-16 max-w-xl px-6 pb-24 md:mt-20">
+        <motion.div style={{ y: cardY }}>
+          <FadeUp delay={0.5} y={40}>
+            <OutcomesCard />
           </FadeUp>
-
-          <FadeUp delay={0.85}>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <button
-                data-testid="hero-see-how-button"
-                onClick={() => scrollToId("features")}
-                className="group flex cursor-pointer items-center gap-3 bg-brand px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-brand-dark"
-              >
-                See How OnTime Works
-                <ArrowDown
-                  size={16}
-                  className="transition-transform duration-300 group-hover:translate-y-1"
-                />
-              </button>
-            </div>
-          </FadeUp>
-
-          <FadeUp delay={1}>
-            <p className="mt-12 font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400">
-              Capacity <span className="mx-2 text-zinc-300">/</span> Dependencies{" "}
-              <span className="mx-2 text-zinc-300">/</span> Milestones{" "}
-              <span className="mx-2 text-zinc-300">/</span> Prediction
-            </p>
-          </FadeUp>
-        </div>
-
-        <div className="flex items-center px-5 py-12 md:px-10 lg:col-span-5 lg:py-16">
-          <motion.div style={{ y: cardY }} className="w-full">
-            <FadeUp delay={0.5} y={40}>
-              <OutcomesCard />
-            </FadeUp>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
