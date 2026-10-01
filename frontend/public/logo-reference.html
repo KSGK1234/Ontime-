@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Logo References — Global SaaS Standards</title>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F4F4F2; color: #131316; font-family: 'General Sans', sans-serif; padding: 40px 24px 80px; }
+  .wrap { max-width: 1060px; margin: 0 auto; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #514EB3; }
+  h1 { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: clamp(26px, 4vw, 40px); letter-spacing: -0.02em; margin-top: 10px; }
+  .sub { color: #6b6b74; margin-top: 8px; font-size: 15px; max-width: 620px; line-height: 1.6; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 36px; }
+  .card { background: #fff; border: 1px solid #E4E4E7; padding: 26px 24px; display: flex; flex-direction: column; gap: 14px; transition: border-color .3s; }
+  .card:hover { border-color: #514EB3; }
+  .glyph { height: 64px; display: flex; align-items: center; }
+  .glyph img { max-height: 52px; max-width: 180px; }
+  .name { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.01em; }
+  .type { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #514EB3; }
+  ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  li { font-size: 13.5px; color: #44444c; line-height: 1.5; padding-left: 16px; position: relative; }
+  li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 1.5px; background: #514EB3; }
+  .swatches { display: flex; gap: 6px; margin-top: 2px; }
+  .sw { width: 18px; height: 18px; border-radius: 4px; border: 1px solid rgba(19,19,22,.08); }
+  .ontime { border: 1.5px solid #514EB3; background: #fff; }
+  .ontime .glyph img { max-height: 56px; max-width: 260px; }
+  .rules { margin-top: 40px; background: #131316; color: #F4F4F2; padding: 30px 28px; }
+  .rules h2 { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 700; font-size: 20px; margin-bottom: 14px; }
+  .rules li { color: #c9c9d2; }
+  .rules li::before { background: #A8A6E8; }
+  .note { margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #9a9aa4; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Design Reference</p>
+    <h1>Global SaaS logo standards</h1>
+    <p class="sub">Four benchmarks you named — what each mark does, and the pattern they all share. Your current OnTime lockup is at the bottom for side-by-side calibration.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="glyph"><img src="https://cdn.simpleicons.org/clickup/6647F0" alt="ClickUp mark" /></div>
+        <div>
+          <p class="type">Gradient action mark</p>
+          <p class="name">ClickUp</p>
+        </div>
+        <ul>
+          <li>Mark = an upward arrow + semicircle: the product promise ("click up") drawn as one symbol</li>
+          <li>Vibrant multi-stop gradient identity (#FF02F0, #FC6D2D, #6647F0, #0091FF)</li>
+          <li>Geometric wordmark, capitalized "U" enforced by brand rules</li>
+        </ul>
+        <div class="swatches"><span class="sw" style="background:#FF02F0"></span><span class="sw" style="background:#FC6D2D"></span><span class="sw" style="background:#6647F0"></span><span class="sw" style="background:#0091FF"></span></div>
+      </div>
+
+      <div class="card">
+        <div class="glyph"><img src="https://cdn.simpleicons.org/linear/5E6AD2" alt="Linear mark" /></div>
+        <div>
+          <p class="type">Minimal monochrome mark</p>
+          <p class="name">Linear</p>
+        </div>
+        <ul>
+          <li>Diagonal rounded streaks forming a sphere — pure geometry, no literal meaning</li>
+          <li>Single indigo (#5E6AD2) — remarkably close to Pragmr's own #514EB3</li>
+          <li>Quiet custom wordmark; the whole identity is restraint</li>
+        </ul>
+        <div class="swatches"><span class="sw" style="background:#5E6AD2"></span><span class="sw" style="background:#131316"></span></div>
+      </div>
+
+      <div class="card">
+        <div class="glyph"><img src="https://cdn.simpleicons.org/clickhouse/FAFF69" alt="ClickHouse mark" /></div>
+        <div>
+          <p class="type">High-contrast data mark</p>
+          <p class="name">ClickHouse</p>
+        </div>
+        <ul>
+          <li>Geometric logomark built from data-column bars — the database drawn as structure</li>
+          <li>Two-color system: neon yellow #FAFF69 on near-black #0A0A0A</li>
+          <li>Punchy contrast pairing; logomark reserved for small/symbol contexts</li>
+        </ul>
+        <div class="swatches"><span class="sw" style="background:#FAFF69"></span><span class="sw" style="background:#0A0A0A"></span></div>
+      </div>
+
+      <div class="card">
+        <div class="glyph"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Monday_logo.svg" alt="monday.com mark" /></div>
+        <div>
+          <p class="type">Friendly geometric shapes</p>
+          <p class="name">monday.com</p>
+        </div>
+        <ul>
+          <li>Three simple shapes in a row — circle, dome, diamond — days progressing toward done</li>
+          <li>Warm tri-color (red/yellow/green) + lowercase wordmark for approachability</li>
+          <li>Shapes are so simple a child could redraw them — that is the test</li>
+        </ul>
+        <div class="swatches"><span class="sw" style="background:#FF3D57"></span><span class="sw" style="background:#FFCB00"></span><span class="sw" style="background:#00CA72"></span></div>
+      </div>
+
+      <div class="card ontime">
+        <div class="glyph"><img src="/ontime-logo.png" alt="OnTime by Pragmr lockup" /></div>
+        <div>
+          <p class="type">Your product — already on standard</p>
+          <p class="name">OnTime by Pragmr™</p>
+        </div>
+        <ul>
+          <li>Endorsed lockup: authentic Pragmr™ mark | simple divider | ⊙nTime with the ring-tick O</li>
+          <li>Two colors (indigo + ink), flat vector, geometric — same class as the four above</li>
+          <li>The ring-tick O is your "click-up equivalent": the promise drawn as a symbol</li>
+        </ul>
+        <div class="swatches"><span class="sw" style="background:#514EB3"></span><span class="sw" style="background:#131316"></span></div>
+      </div>
+    </div>
+
+    <div class="rules">
+      <h2>What makes these "global standard"</h2>
+      <ul>
+        <li>One simple mark that survives 16px favicon and billboard scale — flat geometry only, no 3D, no thin lines</li>
+        <li>One color, or one gradient — never a rainbow of unrelated hues</li>
+        <li>A clean geometric wordmark locked to the mark with fixed clear space</li>
+        <li>The mark encodes the product promise (up, progress, structure, days) — decoration is banned</li>
+        <li>Same assets everywhere: favicon, app icon, social, deck — one source of truth</li>
+      </ul>
+      <p class="note">Third-party marks shown for internal design reference only — trademarks of their owners.</p>
+    </div>
+  </div>
+</body>
+</html>
